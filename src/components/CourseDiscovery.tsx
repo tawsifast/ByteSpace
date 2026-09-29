@@ -1,116 +1,229 @@
+"use client";
+
 import Image from "next/image";
-import { BookmarkIcon } from "@/components/icons";
-import { courseCategories, courses } from "@/data/courses";
 
 export function CourseDiscovery() {
+  const tags = [
+    { name: "Featured", active: true },
+    { name: "Music" },
+    { name: "Drawing & Painting" },
+    { name: "Marketing" },
+    { name: "Animation" },
+    { name: "Social Media" },
+    { name: "UI/UX Design" },
+    { name: "Creative Marketing" },
+    { name: "Digital Illustration" },
+    { name: "Film & Video" },
+    { name: "Crafts" },
+    { name: "Freelance & Entrepreneurship" },
+    { name: "Graphic Design" },
+    { name: "Photography" },
+    { name: "Productivity" },
+    { name: "Web Development" },
+    { name: "Data Science" },
+    { name: "Cooking" },
+  ];
+
+  const courses = [
+    {
+      title: "Learn Figma from Basic",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDk6Q-J1gRwsDkNIZDGTDNz5bLvsGB7jecYFxPrMFM5JD4C8FBATJDbnwL8D-vsKyyE9ukRc-gU2SMgKJm0H0lY1_xl22bebDbp31kXEjyEC6bFbI4LdN4b9XWCIbjeeA1dfIOK6iFhYz6RcbnObGzhSDtsUNBw-bParsVJJ6rIJeCn_cGP1xfLkh7Fw7hkdvdM8wR0Ck0bLXejNbJ3jU0kDwegQ6hwUDZID2Bt_dqZtWj8Dzoodtv7ig",
+      rating: "4.8",
+      author: "pumpui studio",
+      price: "$25",
+      lessons: "17 Lessons",
+      duration: "2 hours 16 mins",
+      comments: "59 Comments",
+      level: "Beginner",
+      students: "26+",
+      avatars: [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBEvxghl-AvU12xSh_amzbYqnFRIBE-ARooKqSbVjre-JASJ4WgGVhi3cQpH95V1HjclfUW7epaiNl2iCSzMQJU-xzeoqgElhN0RjdkoCYC26Jd3BEm0ddwd1FO8ETbfDNqz0JN_15hZ2Q8aPSIXuLtZTswUzBHFbZEiYJ98anhgTeOIp-LpWl2REyUiTpLupI2UmEXvYp6kTf2x7S_JZaeTawHJbKsfrKkY3P6jOyFzByjnRH4OTulHg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuCDD3kB_4cbyyaNvYqRDw2bLXb4H2x3YZ1EQt6OY7n6dx5Uo-GHCOfyTiPuOa5WtfRif1yp0pdOVdGbTqhj7_ADpAdjR-A30ZJQZDd0sj0KsjZYgu3F29d6mejKoAEB0q8S-0HC6A-anFbMBhwqUVQJbCNvkYoqlfqbBFceipcQRmcwXXXtOm_GtGVUnH7G4oslNWN1tqAsTIZAV75u3mmXwcroLYFs1dMnGk_LU3n_JMobRPr_Yr5tgw",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBcD50QUh3FGCqdMfzQWbeH5816JKHfLzh3swHGLEbAKHe_IMtT8HSNhBr8C82F7qY95smOkqyvhJn1o9-IeO6Sm_IMTqd2cW3h6mn7X5-Z_0wEHgJ4q1V2Uoig6-ItyWus7pDNjEyeUP7Idd8i0m72igUODJLdi81jth_gcG6hSQAXGzQzyDMLuIotHCV3bhVFgeexEPbioUypbp7mSk7jEsP2-Z-IswyiPibziHsYy5x5CzkAF2lOOg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBdPewzx2hEbWIA2aa6L3kGmFgxZGbtaCgHLnMtBlOeR4HUwihFPmtucZFYWr64HYjTmhboRcm-ab7MyWrQHiYIF1BekfLlJd_L_VvpPPTGSRnjnjljktLTDIkZOv63vq14XJ7QZh-j34VcnZzK-mspdMD2zFTMC-uN6YuMCmxIgGCeDS6w8bOEotPmjlTLlX6-pgA92wIDh8eV3nsl47Tbfn5KVHbjrEk-RGVZanToQeaYn2_A_HQK6A",
+      ],
+    },
+    {
+      title: "Build Digital Asset",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBORgnlxteEKUvkYuZGuYERzPf7PXCK1k6UVsH2haBMXyNi7i15s0y_7rH_5v-1a7uiHdHF9OZi9rWRTRkJEgdZl7MdE-IHrUPNimKU7wh6b1ZA3jYmFgceWQ0ApRcLFXsBuHCtsixNqoOyBrkXQE38s37zZXR7a-3G9nuYIDEQjPcIHGFOVGBHLq73J2FonYEio9reg_j6MY4XKXfCTp8_j1gRo_EMeGRxwu-Jm8O0t2ICcXPnKgrm_w",
+      rating: "4.8",
+      author: "pumpui studio",
+      price: "$25",
+      lessons: "12 Lessons",
+      duration: "3 hours 10 mins",
+      comments: "42 Comments",
+      level: "Intermediate",
+      students: "18+",
+      avatars: [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuCDD3kB_4cbyyaNvYqRDw2bLXb4H2x3YZ1EQt6OY7n6dx5Uo-GHCOfyTiPuOa5WtfRif1yp0pdOVdGbTqhj7_ADpAdjR-A30ZJQZDd0sj0KsjZYgu3F29d6mejKoAEB0q8S-0HC6A-anFbMBhwqUVQJbCNvkYoqlfqbBFceipcQRmcwXXXtOm_GtGVUnH7G4oslNWN1tqAsTIZAV75u3mmXwcroLYFs1dMnGk_LU3n_JMobRPr_Yr5tgw",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBcD50QUh3FGCqdMfzQWbeH5816JKHfLzh3swHGLEbAKHe_IMtT8HSNhBr8C82F7qY95smOkqyvhJn1o9-IeO6Sm_IMTqd2cW3h6mn7X5-Z_0wEHgJ4q1V2Uoig6-ItyWus7pDNjEyeUP7Idd8i0m72igUODJLdi81jth_gcG6hSQAXGzQzyDMLuIotHCV3bhVFgeexEPbioUypbp7mSk7jEsP2-Z-IswyiPibziHsYy5x5CzkAF2lOOg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBdPewzx2hEbWIA2aa6L3kGmFgxZGbtaCgHLnMtBlOeR4HUwihFPmtucZFYWr64HYjTmhboRcm-ab7MyWrQHiYIF1BekfLlJd_L_VvpPPTGSRnjnjljktLTDIkZOv63vq14XJ7QZh-j34VcnZzK-mspdMD2zFTMC-uN6YuMCmxIgGCeDS6w8bOEotPmjlTLlX6-pgA92wIDh8eV3nsl47Tbfn5KVHbjrEk-RGVZanToQeaYn2_A_HQK6A",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBEvxghl-AvU12xSh_amzbYqnFRIBE-ARooKqSbVjre-JASJ4WgGVhi3cQpH95V1HjclfUW7epaiNl2iCSzMQJU-xzeoqgElhN0RjdkoCYC26Jd3BEm0ddwd1FO8ETbfDNqz0JN_15hZ2Q8aPSIXuLtZTswUzBHFbZEiYJ98anhgTeOIp-LpWl2REyUiTpLupI2UmEXvYp6kTf2x7S_JZaeTawHJbKsfrKkY3P6jOyFzByjnRH4OTulHg",
+      ],
+    },
+    {
+      title: "The Power of Big Data",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAX2ArSJu2HPT8R-tqeY0ScXk7uxWnc_6-rknbJIDR1z9C-SAdp7zzwg7ZVF5zg6s3RsiK8_hVT86IMBwX0I3GBMgAmfAHYOXMMtTkt9D54j75laIWrWuBC8ibaY5A8NpceJud10znfVh_wpp32YTlHLo9qxiGqHDx_P61u4_s5FZGvRKuEtJXOxNq7_iUmvBCTmrMLd2VQFVR9CIA8T_5IbO74Uvjht-DE3gn3FMlkAi-Qg1SpqXkYmw",
+      rating: "4.6",
+      author: "pumpui studio",
+      price: "$25",
+      lessons: "20 Lessons",
+      duration: "4 hours 5 mins",
+      comments: "77 Comments",
+      level: "Advanced",
+      students: "34+",
+      avatars: [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBdPewzx2hEbWIA2aa6L3kGmFgxZGbtaCgHLnMtBlOeR4HUwihFPmtucZFYWr64HYjTmhboRcm-ab7MyWrQHiYIF1BekfLlJd_L_VvpPPTGSRnjnjljktLTDIkZOv63vq14XJ7QZh-j34VcnZzK-mspdMD2zFTMC-uN6YuMCmxIgGCeDS6w8bOEotPmjlTLlX6-pgA92wIDh8eV3nsl47Tbfn5KVHbjrEk-RGVZanToQeaYn2_A_HQK6A",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBEvxghl-AvU12xSh_amzbYqnFRIBE-ARooKqSbVjre-JASJ4WgGVhi3cQpH95V1HjclfUW7epaiNl2iCSzMQJU-xzeoqgElhN0RjdkoCYC26Jd3BEm0ddwd1FO8ETbfDNqz0JN_15hZ2Q8aPSIXuLtZTswUzBHFbZEiYJ98anhgTeOIp-LpWl2REyUiTpLupI2UmEXvYp6kTf2x7S_JZaeTawHJbKsfrKkY3P6jOyFzByjnRH4OTulHg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuCDD3kB_4cbyyaNvYqRDw2bLXb4H2x3YZ1EQt6OY7n6dx5Uo-GHCOfyTiPuOa5WtfRif1yp0pdOVdGbTqhj7_ADpAdjR-A30ZJQZDd0sj0KsjZYgu3F29d6mejKoAEB0q8S-0HC6A-anFbMBhwqUVQJbCNvkYoqlfqbBFceipcQRmcwXXXtOm_GtGVUnH7G4oslNWN1tqAsTIZAV75u3mmXwcroLYFs1dMnGk_LU3n_JMobRPr_Yr5tgw",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBcD50QUh3FGCqdMfzQWbeH5816JKHfLzh3swHGLEbAKHe_IMtT8HSNhBr8C82F7qY95smOkqyvhJn1o9-IeO6Sm_IMTqd2cW3h6mn7X5-Z_0wEHgJ4q1V2Uoig6-ItyWus7pDNjEyeUP7Idd8i0m72igUODJLdi81jth_gcG6hSQAXGzQzyDMLuIotHCV3bhVFgeexEPbioUypbp7mSk7jEsP2-Z-IswyiPibziHsYy5x5CzkAF2lOOg",
+      ],
+    },
+    {
+      title: "Balancing Productivity an...",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBFdZrZrb4WoI2ut0z_4fCezP0U9mZQn_OHn8PLjkmk6gw97T5I4QoeoaYjcSezddn2rUS26sZH2Pij7pmK5FJBbbuTftgJIUSkfDjeMI4rx4TXxHYHGNHP7nn60h_8V6hhr_335QKCrIj4X3mZqxHxV80LKuC_mai13ZngHX54-qLLKwKpmjHejSR8X74_RQhWyJ9FPBkH18Gl9p1BwiNBT4CksHOTiieJEmCwvYIgpux0HT8XFIQmMA",
+      rating: "4.5",
+      author: "pumpui studio",
+      price: "$25",
+      lessons: "10 Lessons",
+      duration: "1 hour 45 mins",
+      comments: "31 Comments",
+      level: "Beginner",
+      students: "12+",
+      avatars: [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBcD50QUh3FGCqdMfzQWbeH5816JKHfLzh3swHGLEbAKHe_IMtT8HSNhBr8C82F7qY95smOkqyvhJn1o9-IeO6Sm_IMTqd2cW3h6mn7X5-Z_0wEHgJ4q1V2Uoig6-ItyWus7pDNjEyeUP7Idd8i0m72igUODJLdi81jth_gcG6hSQAXGzQzyDMLuIotHCV3bhVFgeexEPbioUypbp7mSk7jEsP2-Z-IswyiPibziHsYy5x5CzkAF2lOOg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBEvxghl-AvU12xSh_amzbYqnFRIBE-ARooKqSbVjre-JASJ4WgGVhi3cQpH95V1HjclfUW7epaiNl2iCSzMQJU-xzeoqgElhN0RjdkoCYC26Jd3BEm0ddwd1FO8ETbfDNqz0JN_15hZ2Q8aPSIXuLtZTswUzBHFbZEiYJ98anhgTeOIp-LpWl2REyUiTpLupI2UmEXvYp6kTf2x7S_JZaeTawHJbKsfrKkY3P6jOyFzByjnRH4OTulHg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuCDD3kB_4cbyyaNvYqRDw2bLXb4H2x3YZ1EQt6OY7n6dx5Uo-GHCOfyTiPuOa5WtfRif1yp0pdOVdGbTqhj7_ADpAdjR-A30ZJQZDd0sj0KsjZYgu3F29d6mejKoAEB0q8S-0HC6A-anFbMBhwqUVQJbCNvkYoqlfqbBFceipcQRmcwXXXtOm_GtGVUnH7G4oslNWN1tqAsTIZAV75u3mmXwcroLYFs1dMnGk_LU3n_JMobRPr_Yr5tgw",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBdPewzx2hEbWIA2aa6L3kGmFgxZGbtaCgHLnMtBlOeR4HUwihFPmtucZFYWr64HYjTmhboRcm-ab7MyWrQHiYIF1BekfLlJd_L_VvpPPTGSRnjnjljktLTDIkZOv63vq14XJ7QZh-j34VcnZzK-mspdMD2zFTMC-uN6YuMCmxIgGCeDS6w8bOEotPmjlTLlX6-pgA92wIDh8eV3nsl47Tbfn5KVHbjrEk-RGVZanToQeaYn2_A_HQK6A",
+      ],
+    },
+    {
+      title: "Mastering Money Manage...",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBEvxghl-AvU12xSh_amzbYqnFRIBE-ARooKqSbVjre-JASJ4WgGVhi3cQpH95V1HjclfUW7epaiNl2iCSzMQJU-xzeoqgElhN0RjdkoCYC26Jd3BEm0ddwd1FO8ETbfDNqz0JN_15hZ2Q8aPSIXuLtZTswUzBHFbZEiYJ98anhgTeOIp-LpWl2REyUiTpLupI2UmEXvYp6kTf2x7S_JZaeTawHJbKsfrKkY3P6jOyFzByjnRH4OTulHg",
+      rating: "4.5",
+      author: "purepearl studio",
+      price: "$25",
+      lessons: "17 Lessons",
+      duration: "2 hours 16 mins",
+      comments: "59 Comments",
+      level: "Beginner",
+      students: "26+",
+      avatars: [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBEvxghl-AvU12xSh_amzbYqnFRIBE-ARooKqSbVjre-JASJ4WgGVhi3cQpH95V1HjclfUW7epaiNl2iCSzMQJU-xzeoqgElhN0RjdkoCYC26Jd3BEm0ddwd1FO8ETbfDNqz0JN_15hZ2Q8aPSIXuLtZTswUzBHFbZEiYJ98anhgTeOIp-LpWl2REyUiTpLupI2UmEXvYp6kTf2x7S_JZaeTawHJbKsfrKkY3P6jOyFzByjnRH4OTulHg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuCDD3kB_4cbyyaNvYqRDw2bLXb4H2x3YZ1EQt6OY7n6dx5Uo-GHCOfyTiPuOa5WtfRif1yp0pdOVdGbTqhj7_ADpAdjR-A30ZJQZDd0sj0KsjZYgu3F29d6mejKoAEB0q8S-0HC6A-anFbMBhwqUVQJbCNvkYoqlfqbBFceipcQRmcwXXXtOm_GtGVUnH7G4oslNWN1tqAsTIZAV75u3mmXwcroLYFs1dMnGk_LU3n_JMobRPr_Yr5tgw",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBcD50QUh3FGCqdMfzQWbeH5816JKHfLzh3swHGLEbAKHe_IMtT8HSNhBr8C82F7qY95smOkqyvhJn1o9-IeO6Sm_IMTqd2cW3h6mn7X5-Z_0wEHgJ4q1V2Uoig6-ItyWus7pDNjEyeUP7Idd8i0m72igUODJLdi81jth_gcG6hSQAXGzQzyDMLuIotHCV3bhVFgeexEPbioUypbp7mSk7jEsP2-Z-IswyiPibziHsYy5x5CzkAF2lOOg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBdPewzx2hEbWIA2aa6L3kGmFgxZGbtaCgHLnMtBlOeR4HUwihFPmtucZFYWr64HYjTmhboRcm-ab7MyWrQHiYIF1BekfLlJd_L_VvpPPTGSRnjnjljktLTDIkZOv63vq14XJ7QZh-j34VcnZzK-mspdMD2zFTMC-uN6YuMCmxIgGCeDS6w8bOEotPmjlTLlX6-pgA92wIDh8eV3nsl47Tbfn5KVHbjrEk-RGVZanToQeaYn2_A_HQK6A",
+      ],
+    },
+    {
+      title: "From Idea to Startup Succ...",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuASkg5dsyqWCpFVOyp7C-n0ROXT1h3zPDpLMTyX-NRRy0y34qZcX-wFozZ_YC5GxqbxVIvxYGnKoDFcuaHehvkmar-tGhM42OUnfJns2UzwdlSL2pBREFezHv7WyutKH3W9fC-R6L1ML-pi3rQ1u79W2ZpVvWuhLVQPJtyi6jkIRRsVOANCBUblIbqcvlWyo4SFBpLu2xpNnn0KE0-CDCckj3w6y30etIU27EdgEgZ5OYtMHBwWehwbOw",
+      rating: "4.6",
+      author: "pumpui studio",
+      price: "$25",
+      lessons: "14 Lessons",
+      duration: "2 hours 50 mins",
+      comments: "63 Comments",
+      level: "Intermediate",
+      students: "22+",
+      avatars: [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBdPewzx2hEbWIA2aa6L3kGmFgxZGbtaCgHLnMtBlOeR4HUwihFPmtucZFYWr64HYjTmhboRcm-ab7MyWrQHiYIF1BekfLlJd_L_VvpPPTGSRnjnjljktLTDIkZOv63vq14XJ7QZh-j34VcnZzK-mspdMD2zFTMC-uN6YuMCmxIgGCeDS6w8bOEotPmjlTLlX6-pgA92wIDh8eV3nsl47Tbfn5KVHbjrEk-RGVZanToQeaYn2_A_HQK6A",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBcD50QUh3FGCqdMfzQWbeH5816JKHfLzh3swHGLEbAKHe_IMtT8HSNhBr8C82F7qY95smOkqyvhJn1o9-IeO6Sm_IMTqd2cW3h6mn7X5-Z_0wEHgJ4q1V2Uoig6-ItyWus7pDNjEyeUP7Idd8i0m72igUODJLdi81jth_gcG6hSQAXGzQzyDMLuIotHCV3bhVFgeexEPbioUypbp7mSk7jEsP2-Z-IswyiPibziHsYy5x5CzkAF2lOOg",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuCDD3kB_4cbyyaNvYqRDw2bLXb4H2x3YZ1EQt6OY7n6dx5Uo-GHCOfyTiPuOa5WtfRif1yp0pdOVdGbTqhj7_ADpAdjR-A30ZJQZDd0sj0KsjZYgu3F29d6mejKoAEB0q8S-0HC6A-anFbMBhwqUVQJbCNvkYoqlfqbBFceipcQRmcwXXXtOm_GtGVUnH7G4oslNWN1tqAsTIZAV75u3mmXwcroLYFs1dMnGk_LU3n_JMobRPr_Yr5tgw",
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBEvxghl-AvU12xSh_amzbYqnFRIBE-ARooKqSbVjre-JASJ4WgGVhi3cQpH95V1HjclfUW7epaiNl2iCSzMQJU-xzeoqgElhN0RjdkoCYC26Jd3BEm0ddwd1FO8ETbfDNqz0JN_15hZ2Q8aPSIXuLtZTswUzBHFbZEiYJ98anhgTeOIp-LpWl2REyUiTpLupI2UmEXvYp6kTf2x7S_JZaeTawHJbKsfrKkY3P6jOyFzByjnRH4OTulHg",
+      ],
+    },
+  ];
+
   return (
-    <section
-      aria-labelledby="discover-heading"
-      id="courses"
-      className="py-10 px-4 max-w-md mx-auto"
-    >
-      <div className="text-center mb-6">
-        <span className="inline-block text-xs font-extrabold uppercase tracking-wider text-brand-blue bg-blue-50 px-3 py-1 rounded-full mb-2">
-          Curated Catalog
-        </span>
-        <h2
-          id="discover-heading"
-          className="text-2xl font-black text-slate-900 leading-tight"
-        >
-          Discover Your Passion, <br />
-          Build Your Skills
-        </h2>
-        <p className="mt-2 text-xs text-slate-500 leading-relaxed">
-          Explore high-impact courses taught by vetted practitioners.
-        </p>
-      </div>
+    <section className="py-20 bg-white" id="courses">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Heading */}
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            Discover Your Passion,<br />Build Your Skills
+          </h2>
+          <p className="mt-4 text-slate-500 text-sm max-w-3xl mx-auto">
+            At ByteSpace Courses, we bring you closer to life-changing knowledge. Explore a variety of courses across different
+            fields, from technology to the arts, and make a difference in your career and life.
+          </p>
+        </div>
 
-      <div className="flex items-center gap-2 overflow-x-auto hide-scrollbar pb-2 mb-6 -mx-4 px-4 text-xs font-bold">
-        {courseCategories.map((category, index) => (
-          <button
-            key={category}
-            type="button"
-            aria-pressed={index === 0}
-            className={
-              index === 0
-                ? "px-4 py-2 rounded-full bg-brand-lime text-slate-950 shadow-sm shrink-0 font-extrabold"
-                : "px-4 py-2 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0 transition"
-            }
-          >
-            {category}
-          </button>
-        ))}
-      </div>
+        {/* Tags */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16 max-w-4xl mx-auto">
+          {tags.map((tag) => (
+            <span
+              key={tag.name}
+              className={`px-4 py-1.5 rounded-full text-xs font-semibold ${
+                tag.active ? "bg-[#ccff00] text-gray-900" : "bg-slate-100 text-slate-600"
+              }`}
+            >
+              {tag.name}
+            </span>
+          ))}
+          <span className="px-4 py-1.5 text-xs font-semibold text-blue-600 cursor-pointer">+ More</span>
+        </div>
 
-      <div className="grid grid-cols-2 gap-3.5">
-        {courses.map((course) => (
-          <article
-            key={course.slug}
-            className="bg-white rounded-2xl p-2.5 shadow-sm border border-slate-200/90 flex flex-col justify-between hover:shadow-md transition"
-          >
-            <div>
-              <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-100 mb-2.5">
-                <Image
-                  src={course.thumbnail}
-                  alt={course.thumbnailAlt}
-                  fill
-                  sizes="(max-width: 448px) 45vw, 200px"
-                  className="object-cover"
-                />
-                <span
-                  className={`absolute top-1.5 left-1.5 ${course.tagClassName} text-white text-[9px] font-black px-1.5 py-0.5 rounded-md uppercase`}
-                >
-                  {course.tag}
-                </span>
-                <button
-                  type="button"
-                  aria-label={`Bookmark ${course.title}`}
-                  className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-slate-700 shadow-sm"
-                >
-                  <BookmarkIcon className="w-3 h-3" />
-                </button>
-              </div>
-
-              <h3 className="text-xs font-bold text-slate-900 leading-snug line-clamp-2">
-                {course.title}
-              </h3>
-
-              <div className="flex items-center gap-1.5 mt-2">
-                <div
-                  className={`w-4 h-4 rounded-full ${course.instructor.avatarClassName} text-[8px] text-white flex items-center justify-center font-bold`}
-                >
-                  {course.instructor.initials}
+        {/* Course Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {courses.map((course, idx) => (
+            <div key={idx} className="bg-white rounded-2xl border border-slate-100 shadow-[0_2px_20px_rgba(0,0,0,0.06)] hover:shadow-lg transition-shadow flex flex-col overflow-hidden">
+              {/* Image Section */}
+              <div className="relative w-full h-[190px] overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
+                {/* Pills overlaid at bottom of image */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent pt-6 pb-3 px-3">
+                  <div className="flex gap-1.5 flex-wrap">
+                    <span className="bg-white/90 text-gray-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">{course.lessons}</span>
+                    <span className="bg-white/90 text-gray-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">{course.duration}</span>
+                    <span className="bg-white/90 text-gray-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">{course.comments}</span>
+                  </div>
                 </div>
-                <span className="text-[10px] text-slate-500 font-medium truncate">
-                  {course.instructor.name}
-                </span>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-4 flex flex-col flex-1">
+                {/* Title + Star */}
+                <div className="flex justify-between items-start gap-2 mb-1">
+                  <h3 className="font-bold text-slate-900 text-[15px] leading-snug flex-1">{course.title}</h3>
+                  <div className="flex items-center gap-0.5 shrink-0">
+                    <span className="text-slate-700 text-sm font-bold">{course.rating}</span>
+                    <svg className="w-3.5 h-3.5 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  </div>
+                </div>
+
+                {/* Author in blue */}
+                <p className="text-blue-600 text-[11px] font-semibold mb-3">by {course.author}</p>
+
+                {/* Level + Avatars row */}
+                <div className="flex items-center gap-3 mb-4">
+                  {/* Level pill */}
+                  <span className="flex items-center gap-1 border border-slate-200 text-slate-600 text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                    <svg className="w-3 h-3 fill-current text-slate-500" viewBox="0 0 24 24"><rect x="2" y="14" width="4" height="8" rx="1"/><rect x="10" y="9" width="4" height="13" rx="1"/><rect x="18" y="4" width="4" height="18" rx="1"/></svg>
+                    {course.level}
+                  </span>
+                  {/* Overlapping avatar photos */}
+                  <div className="flex items-center">
+                    <div className="flex -space-x-2">
+                      {course.avatars.map((av, i) => (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img key={i} src={av} alt="student" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                      ))}
+                    </div>
+                    <span className="ml-1.5 bg-[#ccff00] text-gray-900 text-[10px] font-bold px-2 py-0.5 rounded-full">{course.students}</span>
+                  </div>
+                </div>
+
+                {/* Price */}
+                <div className="mt-auto text-[15px]">
+                  <span className="font-extrabold text-blue-600">{course.price}</span>
+                  <span className="text-slate-400 font-medium text-xs">/lifetime</span>
+                </div>
               </div>
             </div>
-
-            <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
-              <div className="flex items-center text-[10px] font-bold text-amber-500">
-                ★ {course.rating}{" "}
-                <span className="text-slate-400 font-normal ml-0.5">
-                  ({course.reviewCount})
-                </span>
-              </div>
-              <div className="text-right">
-                <span className="text-xs font-extrabold text-brand-blue">
-                  {course.price}
-                </span>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div className="mt-6 text-center">
-        <a
-          href="#courses"
-          className="block w-full py-3 bg-white border border-slate-300 font-bold text-xs rounded-xl text-slate-800 shadow-sm hover:bg-slate-50 active:scale-95 transition"
-        >
-          Browse All 500+ Courses →
-        </a>
+          ))}
+        </div>
       </div>
     </section>
   );

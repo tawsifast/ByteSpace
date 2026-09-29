@@ -1,25 +1,23 @@
-import { CourseDiscovery } from "@/components/CourseDiscovery";
-import { CtaBanner } from "@/components/CtaBanner";
-import { GrowthSection } from "@/components/GrowthSection";
-import { HeroSection } from "@/components/HeroSection";
-import { InstructorSection } from "@/components/InstructorSection";
-import { LearningPaths } from "@/components/LearningPaths";
-import { PartnerTrustBar } from "@/components/PartnerTrustBar";
-import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import HeroSection from "@/components/HeroSection";
+import { PartnerTrustBar } from "@/components/PartnerTrustBar";
+import { CourseDiscovery } from "@/components/CourseDiscovery";
+import { LearningPaths } from "@/components/LearningPaths";
+import { ValuePropSplitSection } from "@/components/ValuePropSplitSection";
+import { CtaBanner } from "@/components/CtaBanner";
 import { Testimonials } from "@/components/Testimonials";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export default function Home() {
   return (
     <>
       <SiteHeader />
       <main>
-        <HeroSection />
+         <HeroSection/>
         <PartnerTrustBar />
         <CourseDiscovery />
         <LearningPaths />
-        <GrowthSection />
-        <InstructorSection />
+        <ValuePropSplitSection />
         <CtaBanner />
         <Testimonials />
       </main>

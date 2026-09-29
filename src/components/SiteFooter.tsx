@@ -1,111 +1,80 @@
-import { BrandLogo } from "@/components/BrandLogo";
-import { LinkedInIcon, TwitterIcon, YouTubeIcon } from "@/components/icons";
-
-const footerColumns = [
-  {
-    heading: "Programs",
-    links: [
-      { label: "UI/UX Design", href: "#courses" },
-      { label: "Full Stack Dev", href: "#courses" },
-      { label: "Data & AI", href: "#courses" },
-      { label: "Product Mgmt", href: "#courses" },
-    ],
-  },
-  {
-    heading: "Company",
-    links: [
-      { label: "About Us", href: "#" },
-      { label: "Mentors", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Blog", href: "#" },
-    ],
-  },
-  {
-    heading: "Legal",
-    links: [
-      { label: "Privacy", href: "#" },
-      { label: "Terms of Use", href: "#" },
-      { label: "Cookies", href: "#" },
-      { label: "Support", href: "#" },
-    ],
-  },
-];
-
-const socials = [
-  { label: "Twitter", Icon: TwitterIcon },
-  { label: "LinkedIn", Icon: LinkedInIcon },
-  { label: "YouTube", Icon: YouTubeIcon },
-];
-
 export function SiteFooter() {
   return (
-    <footer className="bg-white border-t border-slate-200 pt-10 pb-8 px-4 text-slate-600">
-      <div className="max-w-md mx-auto">
-        <div className="mb-8">
-          <a href="#" aria-label="ByteSpace Home" className="inline-block mb-3">
-            <BrandLogo size="sm" tone="onLight" className="text-xl" />
-          </a>
-          <p className="text-xs text-slate-500 mb-4 leading-relaxed">
-            Empowering the next generation of digital builders with accessible,
-            mentor-led education.
-          </p>
+    <footer className="bg-white text-slate-900 border-t border-slate-100 pt-16 pb-8" data-purpose="site-footer">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex flex-col lg:flex-row gap-12 pb-14 border-b border-slate-100">
 
-          <form className="flex items-center gap-1.5">
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              name="email"
-              required
-              placeholder="Enter your email"
-              className="w-full text-xs px-3.5 py-2.5 rounded-full border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue/30 text-slate-800 placeholder-slate-400"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2.5 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-bold text-xs rounded-full shrink-0 shadow-sm transition"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-
-        <div className="grid grid-cols-3 gap-4 border-t border-slate-100 pt-6 text-xs">
-          {footerColumns.map(({ heading, links }) => (
-            <div key={heading}>
-              <h3 className="font-bold text-slate-900 text-xs mb-2.5">
-                {heading}
-              </h3>
-              <ul className="space-y-2 text-[11px] text-slate-500">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <a className="hover:text-brand-blue" href={link.href}>
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          {/* Left: Brand + Newsletter */}
+          <div className="w-full lg:w-[38%] shrink-0">
+            {/* Logo */}
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-7 h-7 bg-[#ccff00] rounded-sm flex items-center justify-center font-black text-slate-900 text-base leading-none">
+                b
+              </div>
+              <span className="text-xl font-bold tracking-tight text-slate-900">ByteSpace</span>
             </div>
-          ))}
+
+            <p className="text-slate-500 text-sm leading-relaxed mb-6 max-w-xs">
+              Stay up to date with our latest features and releases by joining our newsletter.
+            </p>
+
+            {/* Newsletter input */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-4">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 border border-slate-200 rounded-full px-5 py-3 text-sm outline-none focus:border-blue-400 text-slate-900 placeholder-slate-400"
+              />
+              <button
+                type="button"
+                className="bg-[#ccff00] text-slate-900 font-bold px-7 py-3 rounded-full text-sm hover:bg-[#b3e600] transition-colors whitespace-nowrap"
+              >
+                Search
+              </button>
+            </div>
+            <p className="text-slate-400 text-[11px] leading-relaxed max-w-xs">
+              By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
+            </p>
+          </div>
+
+          {/* Right: Link columns */}
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
+            {/* Column 1 */}
+            <ul className="space-y-4">
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Featured Courses</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Featured Categories</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Business</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">IT</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Design</a></li>
+            </ul>
+
+            {/* Column 2 */}
+            <ul className="space-y-4">
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Development</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Marketing</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Photography</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Finance</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Sport</a></li>
+            </ul>
+
+            {/* Column 3 */}
+            <ul className="space-y-4">
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Become a Creator</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Affiliate Programs</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Contact</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">Help</a></li>
+              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">About</a></li>
+            </ul>
+          </div>
         </div>
 
-        <div className="border-t border-slate-100 mt-8 pt-6 flex flex-col items-center justify-between gap-3 text-center">
-          <p className="text-[10px] text-slate-400">
-            &copy; {new Date().getFullYear()} ByteSpace, Inc. All rights reserved.
-            Built for mobile.
-          </p>
-          <div className="flex items-center gap-3 text-slate-400">
-            {socials.map(({ label, Icon }) => (
-              <a
-                key={label}
-                href="#"
-                aria-label={label}
-                className="hover:text-brand-blue"
-              >
-                <Icon className="w-4 h-4" />
-              </a>
-            ))}
+        {/* Bottom bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+          <p>© 2023 ByteSpace. All rights reserved.</p>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-slate-700 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-slate-700 transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-slate-700 transition-colors">Cookie Settings</a>
           </div>
         </div>
       </div>

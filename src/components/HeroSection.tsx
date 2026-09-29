@@ -1,109 +1,127 @@
-import Image from "next/image";
-import { SearchIcon } from "@/components/icons";
+import React from 'react';
+import Image from 'next/image';
+import { Search, ShoppingBag, User, BookOpen, Star } from 'lucide-react';
 
-const heroPhoto =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCm6jmF4ZpbN-pHdlY60gteVhfrteGBOgESe364faAuU7131JxGirqvMo7_8YJWG_Nnn3CKvhK-8_9dPi5HoQsXMfPEHdHvGpu0-28JE_bnG_d-iSJbwsgemqXpbny4IGjTOCoa7XOT4qeUZO1kDWO9o7j-PxFTM3MTqqnFgUIZn9QjCpbE3BrqLdVP_Yqtf02ZNqhDujIQ2pX6N1-0xsceohx0FikZ0U2WUcOCPSSaBWkukPmlANUHRw";
-
-const mentorAvatars = [
-  { initials: "JD", className: "bg-blue-500" },
-  { initials: "AL", className: "bg-amber-500" },
-  { initials: "MS", className: "bg-emerald-500" },
-];
-
-export function HeroSection() {
+export default function HeroSection() {
   return (
-    <section className="relative bg-brand-blue text-white overflow-hidden pt-7 pb-12 px-4 bg-grid-pattern">
-      <div className="absolute -top-6 -left-6 w-20 h-20 shape-ring opacity-40 rotate-12" />
-      <div className="absolute top-10 right-4 w-12 h-12 bg-brand-lime rounded-xl rotate-45 opacity-90" />
-      <div className="absolute top-44 -left-3 w-14 h-8 bg-brand-lime rounded-full -rotate-12" />
-      <div className="absolute top-52 right-2 w-10 h-10 border-4 border-white/60 rounded-full" />
+    <div className="relative min-h-screen bg-brand-blue text-white overflow-hidden font-sans">
+      
+      {/* Background Grid Lines Effect */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
-      <div className="max-w-md mx-auto text-center relative z-10">
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3.5 py-1 rounded-full text-xs font-medium text-brand-lime mb-3">
-          <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse" />
-          Over 500+ Industry-Verified Courses
-        </div>
 
-        <h1 className="text-3xl sm:text-4xl font-black tracking-tight leading-[1.18] text-white">
-          Get Access to Hundreds <br />
-          <span className="text-brand-lime">Courses Available</span>
+
+      {/* Decorative Shapes */}
+      <div className="absolute top-20 left-10 w-20 h-20 text-[#ccff00] -rotate-12">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M10,50 Q25,10 40,50 T70,50 T100,50" />
+        </svg>
+      </div>
+      <div className="absolute top-40 right-20 w-16 h-16 text-white rotate-45">
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          <polygon points="50,10 90,90 10,90" />
+        </svg>
+      </div>
+      <div className="absolute bottom-20 left-20 w-24 h-24 text-white">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="15">
+          <circle cx="50" cy="50" r="40" />
+        </svg>
+      </div>
+      <div className="absolute bottom-40 right-10 w-20 h-20 text-[#ccff00] rotate-45">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M10,50 Q25,10 40,50 T70,50 T100,50" />
+        </svg>
+      </div>
+
+      {/* Hero Main Content */}
+      <main className="relative z-10 max-w-5xl mx-auto px-4 pt-12 lg:pt-20 text-center flex flex-col items-center">
+        
+        {/* Title */}
+        <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-tight leading-[1.1] max-w-3xl">
+          Get Access to Hundreds<br />Courses Available
         </h1>
-        <p className="mt-3 text-sm text-blue-100/90 leading-relaxed max-w-xs mx-auto">
-          Find your ideal course, get certified, and kickstart your dream career with
-          our industry-vetted mentors.
+
+        {/* Subtitle */}
+        <p className="mt-6 text-base text-white/90 max-w-xl font-medium">
+          Unlock your creativity with skill-based courses and grow your professional skills with industry-expert instructors.
         </p>
 
-        <form action="#courses" className="mt-6 relative max-w-sm mx-auto">
-          <div className="relative flex items-center">
-            <input
-              type="text"
-              name="q"
-              placeholder="Search for a course, skill..."
-              className="w-full pl-11 pr-24 py-3 rounded-full bg-white text-slate-800 placeholder-slate-400 text-sm font-medium shadow-xl focus:outline-none focus:ring-4 focus:ring-brand-lime/40 border-0"
-            />
-            <div className="absolute left-4 text-slate-400">
-              <SearchIcon className="w-4 h-4" />
-            </div>
-            <button
-              type="submit"
-              className="absolute right-1.5 px-4 py-2 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-bold text-xs rounded-full transition-all shadow-sm"
-            >
-              Search
-            </button>
+        {/* Search Bar */}
+        <div className="mt-10 w-full max-w-lg bg-white p-2 rounded-full shadow-2xl flex items-center">
+          <div className="pl-4 text-gray-400">
+            <Search className="w-5 h-5" />
           </div>
-        </form>
-
-        <div className="mt-8 relative max-w-xs mx-auto">
-          <div className="w-64 h-64 mx-auto rounded-full bg-brand-lime flex items-center justify-center p-3 shadow-2xl">
-            <div className="w-full h-full rounded-full overflow-hidden bg-slate-100 border-4 border-white shadow-inner relative">
-              <Image
-                src={heroPhoto}
-                alt="Young student with headphones studying"
-                fill
-                preload
-                sizes="256px"
-                className="object-cover object-top"
-              />
-            </div>
-          </div>
-
-          <div className="absolute -top-3 -left-4 bg-white text-slate-900 px-3 py-1.5 rounded-2xl shadow-xl flex items-center gap-2 border border-slate-100 animate-bounce duration-1000">
-            <div className="flex -space-x-1.5 overflow-hidden">
-              {mentorAvatars.map(({ initials, className }) => (
-                <span
-                  key={initials}
-                  className={`inline-block h-6 w-6 rounded-full ring-2 ring-white ${className} text-[10px] text-white font-bold text-center leading-6`}
-                >
-                  {initials}
-                </span>
-              ))}
-            </div>
-            <div className="text-left leading-tight">
-              <span className="block text-[10px] text-slate-400 font-bold uppercase">
-                Online
-              </span>
-              <span className="block text-xs font-extrabold text-slate-900">
-                70+ Mentors
-              </span>
-            </div>
-          </div>
-
-          <div className="absolute -bottom-3 -right-4 bg-white text-slate-900 px-3.5 py-2 rounded-2xl shadow-xl border border-slate-100 text-left">
-            <div className="flex items-center gap-1 text-amber-500 text-xs font-black">
-              <span>★</span>
-              <span className="text-slate-900 font-extrabold text-sm">4.9</span>
-            </div>
-            <span className="block text-[10px] font-semibold text-slate-500">
-              Overall Rating (95%)
-            </span>
-          </div>
-
-          <div className="absolute -bottom-5 -left-3 bg-brand-navy text-white px-3 py-1 rounded-full text-[11px] font-bold shadow-lg border border-white/20 flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            12k+ Active Learners
-          </div>
+          <input 
+            type="text" 
+            placeholder="Search course..." 
+            className="w-full px-3 py-2 text-gray-800 placeholder-gray-400 bg-transparent focus:outline-none text-sm sm:text-base font-medium"
+          />
+          <button className="bg-[#ccff00] hover:bg-[#b3e600] text-blue-900 font-bold px-8 py-3 rounded-full transition-all text-sm sm:text-base flex-shrink-0">
+            Search
+          </button>
         </div>
-      </div>
-    </section>
+
+        {/* Hero Visual & Floating Cards Section */}
+        <div className="relative w-full max-w-4xl h-[400px] sm:h-[480px] flex justify-center items-end">
+          
+          {/* Lime Green Backdrop Circle */}
+          <div className="absolute bottom-[-330] w-[350px] h-[350px] sm:w-[700px] sm:h-[700px] bg-[#ccff00] rounded-full z-0" />
+
+          {/* Person Illustration / Image */}
+          <div className="relative z-10 w-72 sm:w-96 h-full flex items-end justify-center">
+            <Image 
+              src="/29a52a24e51266edcd7d57d73392ee5fc4833220.png" 
+              alt="Student"
+              width={400}
+              height={480}
+              className="object-contain object-bottom w-full h-full drop-shadow-2xl"
+              priority
+            />
+          </div>
+
+          {/* Floating Card 1: UI/UX Design */}
+          <div className="absolute left-4 sm:left-40 top-50 z-20 bg-white text-gray-900 p-3 rounded-xl shadow-2xl flex items-center gap-3 w-52 text-left">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+              <span className="text-lg">UI</span>
+            </div>
+            <div>
+              <p className="text-sm font-bold">UI/UX Design</p>
+              <p className="text-[10px] text-gray-500 font-medium">8hr, 120s • 35k Views</p>
+            </div>
+          </div>
+
+          {/* Floating Card 2: Success Rate */}
+          <div className="absolute right-4 sm:right-28 top-40 z-20 bg-white text-gray-900 p-4 rounded-xl shadow-2xl w-48 text-left">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-xs font-semibold text-gray-500">Success Rate:</span>
+            </div>
+            <div className="text-3xl font-black text-gray-900 tracking-tight">55%</div>
+            <div className="w-full bg-gray-100 h-2 rounded-full mt-2 overflow-hidden">
+              <div className="bg-[#ccff00] h-full w-[55%] rounded-full" />
+            </div>
+          </div>
+
+          {/* Floating Card 3: Happy Students */}
+          <div className="absolute left-8 sm:left-24 bottom-10 z-20 bg-white text-gray-900 p-3 rounded-xl shadow-2xl w-48 text-left">
+            <p className="text-xs font-bold mb-1">Happy Students</p>
+            <p className="text-[10px] text-gray-500 mb-2">Join over 15k+ students</p>
+            <div className="flex items-center justify-between">
+              <div className="flex -space-x-2">
+                <div className="w-6 h-6 rounded-full bg-pink-400 border-2 border-white" />
+                <div className="w-6 h-6 rounded-full bg-purple-400 border-2 border-white" />
+                <div className="w-6 h-6 rounded-full bg-blue-400 border-2 border-white" />
+              </div>
+              <span className="text-[10px] font-bold bg-[#ccff00] text-gray-900 px-2 py-1 rounded">15k+</span>
+            </div>
+          </div>
+
+        </div>
+
+
+
+     
+
+      </main>
+    </div>
   );
 }
