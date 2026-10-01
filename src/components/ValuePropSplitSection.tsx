@@ -100,7 +100,7 @@ export function ValuePropSplitSection() {
                 alt="Girl with tablet"
                 width={380}
                 height={450}
-                className="w-full max-w-[380px] h-auto object-cover drop-shadow-xl"
+                className="w-full max-w-95 h-auto object-cover drop-shadow-xl"
               />
             </div>
 
@@ -162,7 +162,7 @@ export function ValuePropSplitSection() {
                 "Active Community",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
                     <CheckIcon className="w-3 h-3" strokeWidth={3} />
                   </div>
                   <span className="text-sm font-bold text-slate-700">{item}</span>
@@ -171,7 +171,6 @@ export function ValuePropSplitSection() {
             </ul>
           </div>
         </div>
-
       </div>
     </section>
   );
