@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import { Avatar, AvatarGroup, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 export function CourseDiscovery() {
   const tags = [
@@ -152,14 +153,14 @@ export function CourseDiscovery() {
         {/* Tags */}
         <div className="flex flex-wrap justify-center gap-3 mb-16 max-w-4xl mx-auto">
           {tags.map((tag) => (
-            <span
+            <Badge
               key={tag.name}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold ${
+              className={`h-auto rounded-full border-0 px-4 py-1.5 text-xs font-semibold ${
                 tag.active ? "bg-[#ccff00] text-gray-900" : "bg-slate-100 text-slate-600"
               }`}
             >
               {tag.name}
-            </span>
+            </Badge>
           ))}
           <span className="px-4 py-1.5 text-xs font-semibold text-blue-600 cursor-pointer">+ More</span>
         </div>
@@ -175,9 +176,9 @@ export function CourseDiscovery() {
                 {/* Pills overlaid at bottom of image */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent pt-6 pb-3 px-3">
                   <div className="flex gap-1.5 flex-wrap">
-                    <span className="bg-white/90 text-gray-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">{course.lessons}</span>
-                    <span className="bg-white/90 text-gray-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">{course.duration}</span>
-                    <span className="bg-white/90 text-gray-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">{course.comments}</span>
+                    <Badge className="h-auto rounded-full border-0 bg-white/90 px-2.5 py-1 text-[10px] font-semibold text-gray-800">{course.lessons}</Badge>
+                    <Badge className="h-auto rounded-full border-0 bg-white/90 px-2.5 py-1 text-[10px] font-semibold text-gray-800">{course.duration}</Badge>
+                    <Badge className="h-auto rounded-full border-0 bg-white/90 px-2.5 py-1 text-[10px] font-semibold text-gray-800">{course.comments}</Badge>
                   </div>
                 </div>
               </div>
@@ -199,19 +200,20 @@ export function CourseDiscovery() {
                 {/* Level + Avatars row */}
                 <div className="flex items-center gap-3 mb-4">
                   {/* Level pill */}
-                  <span className="flex items-center gap-1 border border-slate-200 text-slate-600 text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                  <Badge variant="outline" className="h-auto gap-1 rounded-full border-slate-200 px-2.5 py-1 text-[11px] font-semibold text-slate-600">
                     <svg className="w-3 h-3 fill-current text-slate-500" viewBox="0 0 24 24"><rect x="2" y="14" width="4" height="8" rx="1"/><rect x="10" y="9" width="4" height="13" rx="1"/><rect x="18" y="4" width="4" height="18" rx="1"/></svg>
                     {course.level}
-                  </span>
+                  </Badge>
                   {/* Overlapping avatar photos */}
                   <div className="flex items-center">
-                    <div className="flex -space-x-2">
+                    <AvatarGroup>
                       {course.avatars.map((av, i) => (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img key={i} src={av} alt="student" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                        <Avatar key={i} size="sm" className="after:hidden">
+                          <AvatarImage src={av} alt="student" />
+                        </Avatar>
                       ))}
-                    </div>
-                    <span className="ml-1.5 bg-[#ccff00] text-gray-900 text-[10px] font-bold px-2 py-0.5 rounded-full">{course.students}</span>
+                    </AvatarGroup>
+                    <Badge className="ml-1.5 h-auto rounded-full border-0 bg-[#ccff00] px-2 py-0.5 text-[10px] font-bold text-gray-900">{course.students}</Badge>
                   </div>
                 </div>
 

@@ -1,6 +1,9 @@
-import React from 'react';
 import Image from 'next/image';
-import { Search, ShoppingBag, User, BookOpen, Star } from 'lucide-react';
+import { SearchIcon } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Progress } from '@/components/ui/progress';
 
 export default function HeroSection() {
   return (
@@ -49,16 +52,20 @@ export default function HeroSection() {
         {/* Search Bar */}
         <div className="mt-10 w-full max-w-lg bg-white p-2 rounded-full shadow-2xl flex items-center">
           <div className="pl-4 text-gray-400">
-            <Search className="w-5 h-5" />
+            <SearchIcon className="w-5 h-5" />
           </div>
-          <input 
-            type="text" 
-            placeholder="Search course..." 
-            className="w-full px-3 py-2 text-gray-800 placeholder-gray-400 bg-transparent focus:outline-none text-sm sm:text-base font-medium"
+          <Input
+            type="text"
+            placeholder="Search course..."
+            aria-label="Search course"
+            className="h-auto min-w-0 rounded-full border-0 bg-transparent px-3 py-2 text-sm sm:text-base font-medium text-gray-800 shadow-none placeholder:text-gray-400 outline-none focus-visible:border-0 focus-visible:ring-0"
           />
-          <button className="bg-[#ccff00] hover:bg-[#b3e600] text-blue-900 font-bold px-8 py-3 rounded-full transition-all text-sm sm:text-base flex-shrink-0">
+          <Button
+            variant="ghost"
+            className="h-auto shrink-0 rounded-full bg-[#ccff00] px-8 py-3 text-sm sm:text-base font-bold text-blue-900 hover:bg-[#b3e600] hover:text-blue-900"
+          >
             Search
-          </button>
+          </Button>
         </div>
 
         {/* Hero Visual & Floating Cards Section */}
@@ -96,9 +103,10 @@ export default function HeroSection() {
               <span className="text-xs font-semibold text-gray-500">Success Rate:</span>
             </div>
             <div className="text-3xl font-black text-gray-900 tracking-tight">55%</div>
-            <div className="w-full bg-gray-100 h-2 rounded-full mt-2 overflow-hidden">
-              <div className="bg-[#ccff00] h-full w-[55%] rounded-full" />
-            </div>
+            <Progress
+              value={55}
+              className="mt-2 h-2 rounded-full bg-gray-100 [&_[data-slot=progress-indicator]]:bg-[#ccff00]"
+            />
           </div>
 
           {/* Floating Card 3: Happy Students */}

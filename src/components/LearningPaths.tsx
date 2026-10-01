@@ -1,3 +1,5 @@
+import { Card } from "@/components/ui/card";
+
 export function LearningPaths() {
   const paths = [
     { name: "Design", icon: (
@@ -54,15 +56,15 @@ export function LearningPaths() {
         {/* Path cards — 6-col grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
           {paths.map((path, idx) => (
-            <div
+            <Card
               key={idx}
-              className="group flex flex-col items-center justify-center p-6 bg-white rounded-3xl border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 h-[140px]"
+              className="group h-[140px] items-center justify-center gap-0 rounded-3xl border border-slate-100 bg-white p-6 ring-0 shadow-none hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300"
             >
               <div className="w-10 h-10 rounded-full bg-[#ccff00] flex items-center justify-center mb-3">
                 {path.icon}
               </div>
               <span className="font-bold text-gray-800 text-xs text-center">{path.name}</span>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

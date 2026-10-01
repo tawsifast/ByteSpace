@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 export function CtaBanner() {
   return (
     <section className="bg-[#0B40E8] relative overflow-hidden" data-purpose="creator-cta-banner">
@@ -50,12 +52,13 @@ export function CtaBanner() {
             part of a community comprising over 10,000 local and international creators. Utilize our Course Editor and showcase your 
             expertise by publishing your first course on the ByteSpace Course Library.
           </p>
-          <a
-            href="/register"
-            className="inline-block bg-[#ccff00] text-gray-900 font-bold px-8 py-3.5 rounded-full text-sm hover:shadow-lg hover:-translate-y-0.5 transition-all"
+          <Button
+            asChild
+            variant="ghost"
+            className="h-auto rounded-full bg-[#ccff00] px-8 py-3.5 text-sm font-bold text-gray-900 hover:bg-[#ccff00] hover:text-gray-900 hover:shadow-lg hover:-translate-y-0.5 transition-all"
           >
-            Join as Creator
-          </a>
+            <a href="/register">Join as Creator</a>
+          </Button>
         </div>
       </div>
     </section>

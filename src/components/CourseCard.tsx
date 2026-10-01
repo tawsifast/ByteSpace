@@ -1,6 +1,9 @@
 import Link from "next/link";
 import type { Course } from "@/data/coursesData";
 
+import { Avatar, AvatarGroup, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+
 type CourseCardProps = {
   course: Course;
   author?: string;
@@ -23,15 +26,15 @@ export function CourseCard({ course, author }: CourseCardProps) {
         {/* Pills overlaid at bottom of image */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent pt-6 pb-3 px-3">
           <div className="flex gap-1.5 flex-wrap">
-            <span className="bg-white/90 text-gray-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">
+            <Badge className="h-auto rounded-full border-0 bg-white/90 px-2.5 py-1 text-[10px] font-semibold text-gray-800">
               {course.lessons}
-            </span>
-            <span className="bg-white/90 text-gray-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">
+            </Badge>
+            <Badge className="h-auto rounded-full border-0 bg-white/90 px-2.5 py-1 text-[10px] font-semibold text-gray-800">
               {course.duration}
-            </span>
-            <span className="bg-white/90 text-gray-800 text-[10px] font-semibold px-2.5 py-1 rounded-full">
+            </Badge>
+            <Badge className="h-auto rounded-full border-0 bg-white/90 px-2.5 py-1 text-[10px] font-semibold text-gray-800">
               {course.comments}
-            </span>
+            </Badge>
           </div>
         </div>
       </div>
@@ -64,7 +67,10 @@ export function CourseCard({ course, author }: CourseCardProps) {
         {/* Level + Avatars row */}
         <div className="flex items-center gap-3 mb-4">
           {/* Level pill */}
-          <span className="flex items-center gap-1 border border-slate-200 text-slate-600 text-[11px] font-semibold px-2.5 py-1 rounded-full">
+          <Badge
+            variant="outline"
+            className="h-auto gap-1 rounded-full border-slate-200 px-2.5 py-1 text-[11px] font-semibold text-slate-600"
+          >
             <svg
               className="w-3 h-3 fill-current text-slate-500"
               viewBox="0 0 24 24"
@@ -74,23 +80,19 @@ export function CourseCard({ course, author }: CourseCardProps) {
               <rect x="18" y="4" width="4" height="18" rx="1" />
             </svg>
             {course.level}
-          </span>
+          </Badge>
           {/* Overlapping avatar photos */}
           <div className="flex items-center">
-            <div className="flex -space-x-2">
+            <AvatarGroup>
               {course.studentAvatars.map((avatar, i) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  key={i}
-                  src={avatar}
-                  alt={`Enrolled student ${i + 1}`}
-                  className="w-6 h-6 rounded-full border-2 border-white object-cover"
-                />
+                <Avatar key={i} size="sm" className="after:hidden">
+                  <AvatarImage src={avatar} alt={`Enrolled student ${i + 1}`} />
+                </Avatar>
               ))}
-            </div>
-            <span className="ml-1.5 bg-[#ccff00] text-gray-900 text-[10px] font-bold px-2 py-0.5 rounded-full">
+            </AvatarGroup>
+            <Badge className="ml-1.5 h-auto rounded-full border-0 bg-[#ccff00] px-2 py-0.5 text-[10px] font-bold text-gray-900">
               {course.students}
-            </span>
+            </Badge>
           </div>
         </div>
 

@@ -1,4 +1,9 @@
 import Image from "next/image";
+import { CheckIcon } from "lucide-react";
+
+import { Avatar, AvatarFallback, AvatarGroup } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 
 export function ValuePropSplitSection() {
   return (
@@ -69,9 +74,10 @@ export function ValuePropSplitSection() {
             <div className="absolute top-24 -right-8 z-20 bg-white p-4 rounded-xl shadow-xl border border-slate-100 w-40 text-left">
               <p className="text-[10px] font-semibold text-gray-500 mb-1">Success Rate:</p>
               <p className="text-3xl font-black text-gray-900 leading-none">55%</p>
-              <div className="w-full bg-gray-100 h-1.5 rounded-full mt-2">
-                <div className="bg-[#ccff00] h-full w-[55%] rounded-full" />
-              </div>
+              <Progress
+                value={55}
+                className="mt-2 h-1.5 rounded-full bg-gray-100 [&_[data-slot=progress-indicator]]:bg-[#ccff00]"
+              />
             </div>
 
             {/* Decorative Zigzag */}
@@ -100,7 +106,7 @@ export function ValuePropSplitSection() {
             <div className="absolute top-10 left-0 z-20 bg-blue-600 p-4 rounded-2xl shadow-xl w-44 text-left border border-white/20">
               <div className="flex justify-between items-center mb-1">
                 <p className="text-[10px] text-white/80 font-medium">Total Revenue</p>
-                <span className="text-[9px] bg-white/20 text-white px-1.5 py-0.5 rounded-full">+4.5%</span>
+                <Badge className="h-auto rounded-full border-0 bg-white/20 px-1.5 py-0.5 text-[9px] text-white">+4.5%</Badge>
               </div>
               <p className="text-xl font-bold text-white">$120.20</p>
             </div>
@@ -109,7 +115,7 @@ export function ValuePropSplitSection() {
             <div className="absolute top-36 left-0 z-20 bg-white p-4 rounded-2xl shadow-xl w-44 text-left border border-slate-100">
               <div className="flex justify-between items-center mb-1">
                 <p className="text-[10px] text-gray-500 font-medium">My Course</p>
-                <span className="text-[9px] bg-[#ccff00] text-gray-900 px-1.5 py-0.5 rounded-full font-bold">New</span>
+                <Badge className="h-auto rounded-full border-0 bg-[#ccff00] px-1.5 py-0.5 text-[9px] font-bold text-gray-900">New</Badge>
               </div>
               <p className="text-xl font-bold text-gray-900">$1,200.20</p>
             </div>
@@ -118,13 +124,13 @@ export function ValuePropSplitSection() {
             <div className="absolute bottom-10 right-4 z-20 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 w-48 text-left">
               <p className="text-xs font-bold mb-2 text-gray-900">Happy Students</p>
               <div className="flex items-center justify-between">
-                <div className="flex -space-x-2">
-                  <div className="w-6 h-6 rounded-full bg-pink-400 border-2 border-white" />
-                  <div className="w-6 h-6 rounded-full bg-purple-400 border-2 border-white" />
-                  <div className="w-6 h-6 rounded-full bg-blue-400 border-2 border-white" />
-                  <div className="w-6 h-6 rounded-full bg-orange-400 border-2 border-white" />
-                </div>
-                <span className="text-[10px] font-bold bg-[#ccff00] text-gray-900 px-2 py-1 rounded-full">15k+</span>
+                <AvatarGroup>
+                  <Avatar size="sm" className="after:hidden"><AvatarFallback className="bg-pink-400" /></Avatar>
+                  <Avatar size="sm" className="after:hidden"><AvatarFallback className="bg-purple-400" /></Avatar>
+                  <Avatar size="sm" className="after:hidden"><AvatarFallback className="bg-blue-400" /></Avatar>
+                  <Avatar size="sm" className="after:hidden"><AvatarFallback className="bg-orange-400" /></Avatar>
+                </AvatarGroup>
+                <Badge className="h-auto rounded-full border-0 bg-[#ccff00] px-2 py-1 text-[10px] font-bold text-gray-900">15k+</Badge>
               </div>
             </div>
 
@@ -155,9 +161,7 @@ export function ValuePropSplitSection() {
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
+                    <CheckIcon className="w-3 h-3" strokeWidth={3} />
                   </div>
                   <span className="text-sm font-bold text-slate-700">{item}</span>
                 </li>

@@ -1,3 +1,5 @@
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+
 export function Testimonials() {
   const testimonials = [
     {
@@ -56,11 +58,9 @@ export function Testimonials() {
               className="bg-white p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col"
             >
               <div className="mb-6">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  className="w-14 h-14 rounded-full object-cover"
-                />
+                <Avatar className="size-14 after:hidden">
+                  <AvatarImage src={t.avatar} alt={t.name} />
+                </Avatar>
               </div>
               
               <div className="mb-4">
