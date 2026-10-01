@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 /**
  * ByteSpace — "Create an Account" page.
@@ -126,16 +129,16 @@ type FieldProps = {
 function Field({ id, label, type = "text", placeholder, value, onChange }: FieldProps) {
   return (
     <div className="mb-4">
-      <label htmlFor={id} className="mb-1.5 block text-xs font-semibold text-slate-900">
+      <Label htmlFor={id} className="mb-1.5 block text-xs font-semibold text-slate-900">
         {label}
-      </label>
-      <input
+      </Label>
+      <Input
         id={id}
         type={type}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-slate-100 bg-slate-100 px-4 py-3 text-[13.5px] text-slate-900 placeholder:text-slate-400 outline-none focus:border-[#2b2ee0] focus:bg-white"
+        className="h-auto w-full rounded-xl border border-slate-100 bg-slate-100 px-4 py-3 text-[13.5px] text-slate-900 placeholder:text-slate-400 outline-none focus:border-[#2b2ee0] focus:bg-white"
       />
     </div>
   );
@@ -248,13 +251,14 @@ export default function RegisterPage() {
             />
 
             <div className="mt-6 flex justify-end">
-              <button
+              <Button
                 type="submit"
-                className="rounded-full px-7 py-3 text-[13.5px] font-bold text-slate-900"
+                variant="ghost"
+                className="h-auto rounded-full px-7 py-3 text-[13.5px] font-bold text-slate-900 hover:text-slate-900"
                 style={{ background: LIME }}
               >
                 Continue
-              </button>
+              </Button>
             </div>
 
             <p className="mt-6 text-center text-[12.5px] text-slate-400">

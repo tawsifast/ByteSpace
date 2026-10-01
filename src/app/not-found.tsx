@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function NotFoundPage() {
   const [email, setEmail] = useState("");
@@ -129,14 +131,16 @@ export default function NotFoundPage() {
 
         {/* CTA */}
         <div className="mt-8">
-          <a
-            href="/"
-            id="not-found-back-home"
-            className="inline-flex items-center justify-center px-8 py-3 rounded-full text-gray-900 font-semibold text-sm transition-all duration-200 shadow-lg active:scale-95 hover:opacity-90"
+          <Button
+            asChild
+            variant="ghost"
+            className="h-auto rounded-full px-8 py-3 text-sm font-semibold text-gray-900 shadow-lg hover:text-gray-900 hover:opacity-90 active:scale-95"
             style={{ backgroundColor: "#D2FF00" }}
           >
-            Back to Home
-          </a>
+            <a href="/" id="not-found-back-home">
+              Back to Home
+            </a>
+          </Button>
         </div>
       </main>
 
@@ -174,23 +178,24 @@ export default function NotFoundPage() {
                   className="flex items-center max-w-md gap-2"
                   id="not-found-newsletter-form"
                 >
-                  <input
+                  <Input
                     id="not-found-email"
                     type="email"
                     required
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 px-4 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-full focus:outline-none focus:ring-2 text-gray-800 placeholder-gray-400"
+                    className="h-auto flex-1 rounded-full border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2"
                     style={{ "--tw-ring-color": "#D2FF00" } as React.CSSProperties}
                   />
-                  <button
+                  <Button
                     type="submit"
-                    className="px-6 py-2.5 text-gray-900 font-semibold text-sm rounded-full transition-colors whitespace-nowrap hover:opacity-90"
+                    variant="ghost"
+                    className="h-auto whitespace-nowrap rounded-full px-6 py-2.5 text-sm font-semibold text-gray-900 hover:text-gray-900 hover:opacity-90"
                     style={{ backgroundColor: "#D2FF00" }}
                   >
                     Submit
-                  </button>
+                  </Button>
                 </form>
               )}
 

@@ -6,6 +6,10 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const LIME = "#c6f432";
 const BLUE = "#2b2ee0";
@@ -134,18 +138,18 @@ function Field({
 }: FieldProps) {
   return (
     <div className="mb-4">
-      <label htmlFor={id} className="mb-1.5 block text-xs font-semibold text-slate-900">
+      <Label htmlFor={id} className="mb-1.5 block text-xs font-semibold text-slate-900">
         {label}
-      </label>
+      </Label>
       <div className="relative">
-        <input
+        <Input
           id={id}
           type={type}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
           autoComplete={autoComplete}
-          className={`w-full rounded-xl border px-4 py-3 text-[13.5px] text-slate-900 placeholder:text-slate-400 outline-none focus:bg-white ${
+          className={`h-auto w-full rounded-xl border px-4 py-3 text-[13.5px] text-slate-900 placeholder:text-slate-400 outline-none focus:bg-white ${
             error
               ? "border-red-400 bg-red-50 focus:border-red-400"
               : "border-slate-100 bg-slate-100 focus:border-[#2b2ee0]"
@@ -275,22 +279,24 @@ export default function LoginPage() {
               <p className="mb-8 text-[13px] text-slate-400">
                 You are signed in. Ready to continue learning?
               </p>
-              <a
-                href="/courses"
-                id="login-success-cta"
-                className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-[13.5px] font-bold text-slate-900"
+              <Button
+                asChild
+                variant="ghost"
+                className="h-auto gap-2 rounded-full px-7 py-3 text-[13.5px] font-bold text-slate-900 hover:text-slate-900"
                 style={{ background: LIME }}
               >
-                Go to Courses
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
+                <a href="/courses" id="login-success-cta">
+                  Go to Courses
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </Button>
             </div>
           ) : (
             <form
@@ -329,11 +335,12 @@ export default function LoginPage() {
                 onChange={update("password")}
                 error={errors.password}
                 trailing={
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     id="login-toggle-password"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="text-slate-400 transition hover:text-slate-600"
+                    className="h-auto w-auto p-0 text-slate-400 hover:bg-transparent hover:text-slate-600"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? (
@@ -361,49 +368,23 @@ export default function LoginPage() {
                         />
                       </svg>
                     )}
-                  </button>
+                  </Button>
                 }
               />
 
               <div className="mb-4 flex items-center justify-between">
-                <label
-                  className="group flex cursor-pointer items-center gap-2"
+                <Label
+                  className="group flex cursor-pointer items-center gap-2 text-xs font-normal text-slate-500"
                   htmlFor="login-remember"
                 >
-                  <div
+                  <Checkbox
                     id="login-remember"
-                    role="checkbox"
-                    aria-checked={rememberMe}
-                    tabIndex={0}
-                    onClick={() => setRememberMe(!rememberMe)}
-                    onKeyDown={(e) => e.key === " " && setRememberMe(!rememberMe)}
-                    className={`flex h-4 w-4 items-center justify-center rounded border-2 transition-all ${
-                      rememberMe ? "" : "border-slate-300 group-hover:border-[#2b2ee0]"
-                    }`}
-                    style={
-                      rememberMe
-                        ? { background: BLUE, borderColor: BLUE }
-                        : undefined
-                    }
-                  >
-                    {rememberMe && (
-                      <svg
-                        className="h-2.5 w-2.5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={3}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    )}
-                  </div>
+                    checked={rememberMe}
+                    onCheckedChange={(value) => setRememberMe(value === true)}
+                    className="size-4 rounded border-2 border-slate-300 data-[state=checked]:border-[#2b2ee0] data-[state=checked]:bg-[#2b2ee0] data-[state=checked]:text-white group-hover:border-[#2b2ee0]"
+                  />
                   <span className="text-xs text-slate-500">Remember me</span>
-                </label>
+                </Label>
                 <a
                   href="#"
                   id="login-forgot-password"
@@ -415,11 +396,12 @@ export default function LoginPage() {
               </div>
 
               <div className="mt-6 flex justify-end">
-                <button
+                <Button
                   type="submit"
+                  variant="ghost"
                   id="login-submit"
                   disabled={loading}
-                  className="flex items-center gap-2 rounded-full px-7 py-3 text-[13.5px] font-bold text-slate-900 transition disabled:cursor-not-allowed disabled:opacity-70"
+                  className="h-auto gap-2 rounded-full px-7 py-3 text-[13.5px] font-bold text-slate-900 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-70"
                   style={{ background: LIME }}
                 >
                   {loading ? (
@@ -444,7 +426,7 @@ export default function LoginPage() {
                   ) : (
                     "Sign In"
                   )}
-                </button>
+                </Button>
               </div>
 
               <div className="my-6 flex items-center gap-3">
@@ -456,20 +438,22 @@ export default function LoginPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <button
+                <Button
                   id="login-facebook"
                   type="button"
-                  className="flex items-center justify-center gap-2.5 rounded-xl border border-slate-100 bg-slate-100 py-3 text-sm font-semibold text-slate-700 transition hover:border-[#2b2ee0] hover:bg-white"
+                  variant="outline"
+                  className="h-auto gap-2.5 rounded-xl border border-slate-100 bg-slate-100 py-3 text-sm font-semibold text-slate-700 hover:border-[#2b2ee0] hover:bg-white hover:text-slate-700"
                 >
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="#1877F2">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                   Facebook
-                </button>
-                <button
+                </Button>
+                <Button
                   id="login-google"
                   type="button"
-                  className="flex items-center justify-center gap-2.5 rounded-xl border border-slate-100 bg-slate-100 py-3 text-sm font-semibold text-slate-700 transition hover:border-[#2b2ee0] hover:bg-white"
+                  variant="outline"
+                  className="h-auto gap-2.5 rounded-xl border border-slate-100 bg-slate-100 py-3 text-sm font-semibold text-slate-700 hover:border-[#2b2ee0] hover:bg-white hover:text-slate-700"
                 >
                   <svg className="h-4 w-4" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -478,7 +462,7 @@ export default function LoginPage() {
                     <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                   </svg>
                   Google
-                </button>
+                </Button>
               </div>
 
               <p className="mt-6 text-center text-[12.5px] text-slate-400">
