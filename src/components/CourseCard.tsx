@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Course } from "@/data/coursesData";
 
 import { Avatar, AvatarGroup, AvatarImage } from "@/components/ui/avatar";
@@ -17,11 +18,12 @@ export function CourseCard({ course, author }: CourseCardProps) {
     >
       {/* Image Section */}
       <div className="relative w-full h-[190px] overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={course.thumbnail}
           alt={course.thumbnailAlt}
-          className="w-full h-full object-cover"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
         />
         {/* Pills overlaid at bottom of image */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent pt-6 pb-3 px-3">

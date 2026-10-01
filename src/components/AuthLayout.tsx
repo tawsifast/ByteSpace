@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ReactNode } from "react";
 
 const COURSE_PREVIEWS = [
@@ -99,8 +100,7 @@ export function AuthLayout({ children, panelHeading, panelSubtext }: AuthLayoutP
                 style={{ transform: i === 1 ? "translateX(18px)" : "translateX(0px)" }}
               >
                 <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 border border-white/10">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.thumbnail} alt={c.title} className="w-full h-full object-cover" />
+                  <Image src={c.thumbnail} alt={c.title} width={56} height={56} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-white text-xs font-semibold leading-tight truncate">{c.title}</p>
@@ -126,8 +126,7 @@ export function AuthLayout({ children, panelHeading, panelSubtext }: AuthLayoutP
             <div className="flex -space-x-2.5">
               {STUDENT_AVATARS.map((avatar, i) => (
                 <div key={i} className="w-8 h-8 rounded-full border-2 border-brand-blue overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={avatar} alt={`Student ${i + 1}`} className="w-full h-full object-cover" />
+                  <Image src={avatar} alt={`Student ${i + 1}`} width={32} height={32} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>

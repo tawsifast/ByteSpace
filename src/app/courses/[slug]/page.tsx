@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, use, useEffect } from "react";
+import Image from "next/image";
 import { CheckIcon, PlayIcon, Share2Icon } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -277,10 +278,11 @@ export default function CourseDetailsPage({
                     />
                   ) : (
                     <>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
+                      <Image
                         alt="Course video preview poster"
-                        className="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 58vw"
+                        className="object-cover group-hover:scale-105 transition duration-500 opacity-90"
                         src={course.thumbnail}
                       />
                       <div className="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/20 transition flex items-center justify-center">
@@ -381,7 +383,6 @@ export default function CourseDetailsPage({
                   {/* Instructor Bio Box */}
                   <div className="mt-8 pt-6 border-t border-slate-100 bg-slate-50 p-4 rounded-2xl border border-slate-200/60">
                     <div className="flex items-center gap-3">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <Avatar className="size-12 shadow-sm ring-2 ring-white after:hidden">
                         <AvatarImage
                           alt={course.instructor.name}
@@ -493,12 +494,13 @@ export default function CourseDetailsPage({
                       {course.sneakPeekImages?.map((imgUrl, i) => (
                         <div
                           key={i}
-                          className="aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm hover:shadow-md transition"
+                          className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm hover:shadow-md transition"
                         >
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
+                          <Image
                             alt={`Sneak peek screenshot ${i + 1}`}
-                            className="w-full h-full object-cover hover:scale-105 transition duration-300"
+                            fill
+                            sizes="(max-width: 640px) 50vw, 25vw"
+                            className="object-cover hover:scale-105 transition duration-300"
                             src={imgUrl}
                           />
                         </div>

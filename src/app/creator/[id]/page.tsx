@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, use } from "react";
+import Image from "next/image";
 import { FilterIcon, LayoutGridIcon } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -47,9 +48,10 @@ export default function CreatorProfilePage({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header Identity Row */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 alt={creatorInfo.name}
+                width={96}
+                height={96}
                 className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl object-cover ring-4 ring-white/30 shadow-2xl"
                 src={creatorInfo.avatar}
               />

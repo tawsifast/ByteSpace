@@ -60,7 +60,7 @@ export function ValuePropSplitSection() {
 
             {/* Floating Card: Course */}
             <div className="absolute top-10 -left-12 z-20 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 w-56">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk6Q-J1gRwsDkNIZDGTDNz5bLvsGB7jecYFxPrMFM5JD4C8FBATJDbnwL8D-vsKyyE9ukRc-gU2SMgKJm0H0lY1_xl22bebDbp31kXEjyEC6bFbI4LdN4b9XWCIbjeeA1dfIOK6iFhYz6RcbnObGzhSDtsUNBw-bParsVJJ6rIJeCn_cGP1xfLkh7Fw7hkdvdM8wR0Ck0bLXejNbJ3jU0kDwegQ6hwUDZID2Bt_dqZtWj8Dzoodtv7ig" alt="Course" className="w-12 h-12 rounded-lg object-cover" />
+              <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk6Q-J1gRwsDkNIZDGTDNz5bLvsGB7jecYFxPrMFM5JD4C8FBATJDbnwL8D-vsKyyE9ukRc-gU2SMgKJm0H0lY1_xl22bebDbp31kXEjyEC6bFbI4LdN4b9XWCIbjeeA1dfIOK6iFhYz6RcbnObGzhSDtsUNBw-bParsVJJ6rIJeCn_cGP1xfLkh7Fw7hkdvdM8wR0Ck0bLXejNbJ3jU0kDwegQ6hwUDZID2Bt_dqZtWj8Dzoodtv7ig" alt="Course" width={48} height={48} className="w-12 h-12 rounded-lg object-cover" />
               <div>
                 <p className="text-xs font-bold text-gray-900">Learn Figma from Basic</p>
                 <p className="text-[9px] text-gray-500">by pumpui studio</p>
@@ -95,9 +95,11 @@ export function ValuePropSplitSection() {
           {/* Image — Left */}
           <div className="relative order-2 lg:order-1">
             <div className="relative z-10 flex justify-center">
-              <img
+              <Image
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuByZplS_MvG28_ifQxgt9tyOyLMksT2SFgEhjxg_V1sCiICx33HshZ-wcO-NLSsWXffRExXErhxV5pxb94JBZGZKuei0ukluwZhEGdgulm-gFAtS7g75bJadPJ44ulPlI-Pe60_Pcuzi80cVrfTWbXLUr6lHjZt0uki7AbEiRYTTAeTQvdL7dpxvZED4vwPL5PR2Pfj-6hYCpBe43azrZvPZQK4RCfc6YrDlH1ujSVssUxHPowIwUyoiw"
                 alt="Girl with tablet"
+                width={380}
+                height={380}
                 className="w-full max-w-[380px] h-auto object-cover drop-shadow-xl"
               />
             </div>
