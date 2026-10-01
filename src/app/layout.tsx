@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${jakarta.variable} h-full antialiased`}>
+    <html lang="en" className={`${jakarta.variable} h-full antialiased font-sans`}>
       <body className="min-h-full flex flex-col overflow-x-hidden text-slate-800 selection:bg-brand-lime selection:text-black">
         {children}
       </body>
