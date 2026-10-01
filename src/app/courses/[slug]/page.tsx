@@ -1,8 +1,13 @@
 "use client";
 
 import { useState, use, useEffect } from "react";
+import { CheckIcon, PlayIcon, Share2Icon } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import { getCourseBySlug, Course } from "@/data/coursesData";
 
 export default function CourseDetailsPage({
@@ -197,31 +202,20 @@ export default function CourseDetailsPage({
                 </p>
               </div>
 
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 onClick={handleShare}
-                className="self-start bg-brand-lime text-slate-950 hover:bg-brand-limehover px-5 py-2.5 rounded-full text-sm font-bold shadow-lg transition flex items-center gap-2"
+                className="h-auto self-start gap-2 rounded-full bg-brand-lime px-5 py-2.5 text-sm font-bold text-slate-950 shadow-lg hover:bg-brand-limehover hover:text-slate-950"
               >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 10-5.367-2.684 3 3 0 005.367 2.684zm0 9.316a3 3 0 10-5.368 2.684 3 3 0 005.368-2.684z"
-                  />
-                </svg>
+                <Share2Icon className="w-4 h-4" />
                 <span>Share</span>
-              </button>
+              </Button>
             </div>
 
             {/* Quick Badges */}
             <div className="flex flex-wrap items-center gap-3 mb-8">
-              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 text-xs font-bold text-white flex items-center gap-2">
+              <Badge className="h-auto gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold text-white backdrop-blur [&>svg]:size-4!">
                 <svg
                   className="w-4 h-4 text-brand-lime"
                   fill="none"
@@ -236,9 +230,9 @@ export default function CourseDetailsPage({
                   />
                 </svg>
                 <span>{course.studentsCount || "1,250 Students"}</span>
-              </div>
+              </Badge>
 
-              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 text-xs font-bold text-white flex items-center gap-2">
+              <Badge className="h-auto gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold text-white backdrop-blur [&>svg]:size-4!">
                 <svg
                   className="w-4 h-4 text-amber-400 fill-current"
                   viewBox="0 0 20 20"
@@ -248,9 +242,9 @@ export default function CourseDetailsPage({
                 <span>
                   {course.rating} ({course.reviewCount})
                 </span>
-              </div>
+              </Badge>
 
-              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 text-xs font-bold text-white flex items-center gap-2">
+              <Badge className="h-auto gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold text-white backdrop-blur [&>svg]:size-4!">
                 <svg
                   className="w-4 h-4 text-emerald-400"
                   fill="none"
@@ -265,7 +259,7 @@ export default function CourseDetailsPage({
                   />
                 </svg>
                 <span>100% Guaranteed</span>
-              </div>
+              </Badge>
             </div>
 
             {/* Video Preview Player (Left) & Sidebar Container Grid */}
@@ -290,19 +284,16 @@ export default function CourseDetailsPage({
                         src={course.thumbnail}
                       />
                       <div className="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/20 transition flex items-center justify-center">
-                        <button
+                        <Button
                           type="button"
+                          variant="ghost"
+                          size="icon"
                           onClick={() => setIsPlayingVideo(true)}
-                          className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-lime text-slate-950 flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition duration-300"
+                          className="size-16 sm:size-20 rounded-full bg-brand-lime text-slate-950 shadow-2xl hover:bg-brand-lime hover:text-slate-950 group-hover:scale-110 transition duration-300"
                           aria-label="Play introduction video"
                         >
-                          <svg
-                            className="w-8 h-8 fill-current ml-1"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </button>
+                          <PlayIcon className="w-8 h-8 fill-current ml-1" />
+                        </Button>
                       </div>
                     </>
                   )}
@@ -361,13 +352,14 @@ export default function CourseDetailsPage({
                   </div>
 
                   {/* Enroll Button */}
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     onClick={handleEnroll}
-                    className="w-full bg-brand-lime hover:bg-brand-limehover text-slate-950 font-black py-4 rounded-full text-base transition shadow-lg hover:shadow-xl active:scale-95 text-center mb-8"
+                    className="mb-8 h-auto w-full rounded-full bg-brand-lime py-4 text-base font-black text-slate-950 shadow-lg hover:bg-brand-limehover hover:text-slate-950 hover:shadow-xl active:scale-95"
                   >
                     Enroll Now
-                  </button>
+                  </Button>
 
                   {/* Course Includes List */}
                   <div className="pt-6 border-t border-slate-100">
@@ -377,8 +369,8 @@ export default function CourseDetailsPage({
                     <ul className="space-y-3 text-xs font-semibold text-slate-700">
                       {course.includes?.map((inc, index) => (
                         <li key={index} className="flex items-center gap-3">
-                          <span className="w-5 h-5 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center font-bold text-xs shrink-0">
-                            ✓
+                          <span className="w-5 h-5 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center shrink-0">
+                            <CheckIcon className="w-3 h-3" />
                           </span>
                           <span>{inc}</span>
                         </li>
@@ -390,11 +382,12 @@ export default function CourseDetailsPage({
                   <div className="mt-8 pt-6 border-t border-slate-100 bg-slate-50 p-4 rounded-2xl border border-slate-200/60">
                     <div className="flex items-center gap-3">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        alt={course.instructor.name}
-                        className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-sm"
-                        src={course.instructor.avatar}
-                      />
+                      <Avatar className="size-12 shadow-sm ring-2 ring-white after:hidden">
+                        <AvatarImage
+                          alt={course.instructor.name}
+                          src={course.instructor.avatar}
+                        />
+                      </Avatar>
                       <div>
                         <h4 className="font-bold text-sm text-slate-900 leading-tight">
                           {course.instructor.name}
@@ -408,13 +401,14 @@ export default function CourseDetailsPage({
                       {course.instructor.bio ||
                         "Senior Product Designer & Content Creator with over 8+ years of industry experience."}
                     </p>
-                    <button
+                    <Button
                       type="button"
+                      variant="ghost"
                       onClick={handleMessageTeacher}
-                      className="mt-4 w-full bg-white border border-slate-200 hover:bg-slate-100 text-slate-800 text-xs font-bold py-2 rounded-xl transition shadow-sm"
+                      className="mt-4 h-auto w-full rounded-xl border border-slate-200 bg-white py-2 text-xs font-bold text-slate-800 shadow-sm hover:bg-slate-100 hover:text-slate-800"
                     >
                       Teacher Message
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -426,39 +420,42 @@ export default function CourseDetailsPage({
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
           {/* Nav Tabs */}
           <div className="flex items-center gap-3 pb-4 border-b border-slate-200 mb-8">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               onClick={() => setActiveTab("about")}
               className={
                 activeTab === "about"
-                  ? "bg-brand-lime text-slate-950 font-extrabold px-6 py-2.5 rounded-full text-sm shadow-sm transition"
-                  : "bg-white text-slate-600 font-semibold px-6 py-2.5 rounded-full text-sm hover:bg-slate-100 transition border border-slate-200"
+                  ? "h-auto rounded-full border-0 bg-brand-lime px-6 py-2.5 text-sm font-extrabold text-slate-950 shadow-sm hover:bg-brand-lime hover:text-slate-950"
+                  : "h-auto rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-600"
               }
             >
               About
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
               onClick={() => setActiveTab("lessons")}
               className={
                 activeTab === "lessons"
-                  ? "bg-brand-lime text-slate-950 font-extrabold px-6 py-2.5 rounded-full text-sm shadow-sm transition"
-                  : "bg-white text-slate-600 font-semibold px-6 py-2.5 rounded-full text-sm hover:bg-slate-100 transition border border-slate-200"
+                  ? "h-auto rounded-full border-0 bg-brand-lime px-6 py-2.5 text-sm font-extrabold text-slate-950 shadow-sm hover:bg-brand-lime hover:text-slate-950"
+                  : "h-auto rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-600"
               }
             >
               Lessons
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
               onClick={() => setActiveTab("reviews")}
               className={
                 activeTab === "reviews"
-                  ? "bg-brand-lime text-slate-950 font-extrabold px-6 py-2.5 rounded-full text-sm shadow-sm transition"
-                  : "bg-white text-slate-600 font-semibold px-6 py-2.5 rounded-full text-sm hover:bg-slate-100 transition border border-slate-200"
+                  ? "h-auto rounded-full border-0 bg-brand-lime px-6 py-2.5 text-sm font-extrabold text-slate-950 shadow-sm hover:bg-brand-lime hover:text-slate-950"
+                  : "h-auto rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-600"
               }
             >
               Reviews
-            </button>
+            </Button>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -520,8 +517,8 @@ export default function CourseDetailsPage({
                           key={index}
                           className="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-slate-200/80 shadow-sm text-xs font-bold text-slate-800"
                         >
-                          <span className="w-5 h-5 rounded-full bg-brand-blue text-white flex items-center justify-center text-[10px] shrink-0 mt-0.5">
-                            ✓
+                          <span className="w-5 h-5 rounded-full bg-brand-blue text-white flex items-center justify-center shrink-0 mt-0.5">
+                            <CheckIcon className="w-3 h-3" />
                           </span>
                           <span>{pt}</span>
                         </li>
@@ -602,9 +599,10 @@ export default function CourseDetailsPage({
                           99%
                         </span>
                       </div>
-                      <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
-                        <div className="bg-brand-lime h-3 rounded-full w-[99%] shadow-sm" />
-                      </div>
+                      <Progress
+                        value={99}
+                        className="h-3 rounded-full bg-slate-100 [&_[data-slot=progress-indicator]]:bg-brand-lime"
+                      />
                     </div>
                   </div>
                 </div>
@@ -647,9 +645,7 @@ export default function CourseDetailsPage({
                         <div className="flex text-amber-400 text-xs shrink-0">
                           ★★★★★
                         </div>
-                        <div className="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                          <div className="bg-brand-lime h-full w-[75%] rounded-full" />
-                        </div>
+                        <Progress value={75} className="h-2.5 flex-1 rounded-full bg-slate-100 [&_[data-slot=progress-indicator]]:bg-brand-lime" />
                         <span className="text-slate-400 text-[11px] w-8 text-right">
                           75%
                         </span>
@@ -659,9 +655,7 @@ export default function CourseDetailsPage({
                         <div className="flex text-amber-400 text-xs shrink-0">
                           ★★★★☆
                         </div>
-                        <div className="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                          <div className="bg-brand-lime h-full w-[18%] rounded-full" />
-                        </div>
+                        <Progress value={18} className="h-2.5 flex-1 rounded-full bg-slate-100 [&_[data-slot=progress-indicator]]:bg-brand-lime" />
                         <span className="text-slate-400 text-[11px] w-8 text-right">
                           18%
                         </span>
@@ -671,9 +665,7 @@ export default function CourseDetailsPage({
                         <div className="flex text-amber-400 text-xs shrink-0">
                           ★★★☆☆
                         </div>
-                        <div className="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                          <div className="bg-brand-lime h-full w-[5%] rounded-full" />
-                        </div>
+                        <Progress value={5} className="h-2.5 flex-1 rounded-full bg-slate-100 [&_[data-slot=progress-indicator]]:bg-brand-lime" />
                         <span className="text-slate-400 text-[11px] w-8 text-right">
                           5%
                         </span>
@@ -683,9 +675,7 @@ export default function CourseDetailsPage({
                         <div className="flex text-amber-400 text-xs shrink-0">
                           ★★☆☆☆
                         </div>
-                        <div className="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                          <div className="bg-brand-lime h-full w-[2%] rounded-full" />
-                        </div>
+                        <Progress value={2} className="h-2.5 flex-1 rounded-full bg-slate-100 [&_[data-slot=progress-indicator]]:bg-brand-lime" />
                         <span className="text-slate-400 text-[11px] w-8 text-right">
                           2%
                         </span>
@@ -695,9 +685,7 @@ export default function CourseDetailsPage({
                         <div className="flex text-amber-400 text-xs shrink-0">
                           ★☆☆☆☆
                         </div>
-                        <div className="flex-1 bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                          <div className="bg-brand-lime h-full w-[1%] rounded-full" />
-                        </div>
+                        <Progress value={1} className="h-2.5 flex-1 rounded-full bg-slate-100 [&_[data-slot=progress-indicator]]:bg-brand-lime" />
                         <span className="text-slate-400 text-[11px] w-8 text-right">
                           1%
                         </span>
@@ -714,18 +702,19 @@ export default function CourseDetailsPage({
                       {(["All", 5, 4, 3, 2, 1] as const).map((star) => {
                         const isActive = starFilter === star;
                         return (
-                          <button
+                          <Button
                             key={String(star)}
                             type="button"
+                            variant="ghost"
                             onClick={() => setStarFilter(star)}
                             className={
                               isActive
-                                ? "bg-brand-lime text-slate-950 font-bold px-4 py-1.5 rounded-full text-xs shadow-sm transition"
-                                : "bg-white text-slate-600 font-semibold px-4 py-1.5 rounded-full text-xs hover:bg-slate-100 transition border border-slate-200"
+                                ? "h-auto rounded-full border-0 bg-brand-lime px-4 py-1.5 text-xs font-bold text-slate-950 shadow-sm hover:bg-brand-lime hover:text-slate-950"
+                                : "h-auto rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-600"
                             }
                           >
                             {star === "All" ? "All rating" : `★ ${star}`}
-                          </button>
+                          </Button>
                         );
                       })}
                     </div>
@@ -744,12 +733,9 @@ export default function CourseDetailsPage({
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-3">
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                  alt={rev.author}
-                                  className="w-10 h-10 rounded-full object-cover ring-2 ring-slate-100"
-                                  src={rev.avatar}
-                                />
+                                <Avatar className="size-10 ring-2 ring-slate-100 after:hidden">
+                                  <AvatarImage alt={rev.author} src={rev.avatar} />
+                                </Avatar>
                                 <div>
                                   <h5 className="font-bold text-sm text-slate-900">
                                     {rev.author}
