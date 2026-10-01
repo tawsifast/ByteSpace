@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
 export function SiteFooter() {
   return (
     <footer className="bg-white text-slate-900 border-t border-slate-100 pt-16 pb-8" data-purpose="site-footer">
@@ -20,17 +23,19 @@ export function SiteFooter() {
 
             {/* Newsletter input */}
             <div className="flex flex-col sm:flex-row gap-3 mb-4">
-              <input
+              <Input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 border border-slate-200 rounded-full px-5 py-3 text-sm outline-none focus:border-blue-400 text-slate-900 placeholder-slate-400"
+                aria-label="Email address"
+                className="flex-1 h-auto rounded-full border-slate-200 bg-white px-5 py-3 text-sm shadow-none text-slate-900 placeholder:text-slate-400 outline-none focus:border-blue-400 focus-visible:border-blue-400 focus-visible:ring-0"
               />
-              <button
+              <Button
                 type="button"
-                className="bg-[#ccff00] text-slate-900 font-bold px-7 py-3 rounded-full text-sm hover:bg-[#b3e600] transition-colors whitespace-nowrap"
+                variant="ghost"
+                className="h-auto rounded-full bg-[#ccff00] px-7 py-3 text-sm font-bold text-slate-900 hover:bg-[#b3e600] hover:text-slate-900"
               >
                 Search
-              </button>
+              </Button>
             </div>
             <p className="text-slate-400 text-[11px] leading-relaxed max-w-xs">
               By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.

@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { MenuIcon, ShoppingBagIcon, XIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -49,71 +52,48 @@ export function SiteHeader() {
             >
               Sign In
             </a>
-            <a
-              className="bg-[#ccff00] text-blue-900 hover:bg-[#b3e600] px-6 py-2 rounded-full text-sm font-semibold transition duration-200"
-              href="/register"
+            <Button
+              asChild
+              variant="ghost"
+              className="h-auto rounded-full bg-[#ccff00] px-6 py-2 text-sm font-semibold text-blue-900 hover:bg-[#b3e600] hover:text-blue-900"
             >
-              Join Us
-            </a>
+              <a href="/register">Join Us</a>
+            </Button>
           </div>
 
           {/* Cart / Bag Icon */}
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="icon"
             onClick={() => setCartCount((prev) => (prev + 1) % 5)}
-            className="relative text-white hover:opacity-80 transition flex items-center justify-center"
+            className="relative h-auto w-auto p-0 text-white hover:bg-transparent hover:text-white hover:opacity-80 transition flex items-center justify-center"
             aria-label="Shopping Cart"
           >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-              />
-            </svg>
+            <ShoppingBagIcon className="size-5" />
             {cartCount > 0 && (
               <span className="absolute -top-1.5 -right-2 bg-[#ccff00] text-slate-950 text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">
                 {cartCount}
               </span>
             )}
-          </button>
+          </Button>
 
           {/* Mobile menu toggle */}
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-white hover:bg-white/10 focus:outline-none"
+            className="md:hidden size-10 p-2 rounded-lg text-white hover:bg-white/10 hover:text-white"
             aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileMenuOpen}
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+            {mobileMenuOpen ? (
+              <XIcon className="size-6" />
+            ) : (
+              <MenuIcon className="size-6" />
+            )}
+          </Button>
         </div>
       </div>
 
