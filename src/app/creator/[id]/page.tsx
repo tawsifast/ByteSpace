@@ -1,9 +1,12 @@
 "use client";
 
 import { useState, use } from "react";
+import { FilterIcon, LayoutGridIcon } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CourseCard } from "@/components/CourseCard";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { COURSES } from "@/data/coursesData";
 
 export default function CreatorProfilePage({
@@ -55,9 +58,9 @@ export default function CreatorProfilePage({
                   <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
                     {creatorInfo.name}
                   </h1>
-                  <span className="bg-brand-lime text-slate-950 font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                  <Badge className="h-auto rounded-full bg-brand-lime px-3 py-1 text-xs font-black uppercase tracking-wider text-slate-950 shadow-sm">
                     {creatorInfo.badge}
-                  </span>
+                  </Badge>
                 </div>
                 <p className="text-sm sm:text-base text-white/85 font-medium mt-1">
                   {creatorInfo.handle}
@@ -73,25 +76,26 @@ export default function CreatorProfilePage({
             {/* Stat Badges & Follow Button */}
             <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
               <div className="flex items-center gap-3">
-                <div className="bg-white/10 backdrop-blur border border-white/20 rounded-full px-5 py-2 text-xs font-bold text-white flex items-center gap-2">
+                <Badge className="h-auto rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-bold text-white backdrop-blur">
                   <span>{creatorInfo.productsCount} Products</span>
-                </div>
-                <div className="bg-white/10 backdrop-blur border border-white/20 rounded-full px-5 py-2 text-xs font-bold text-white flex items-center gap-2">
+                </Badge>
+                <Badge className="h-auto rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-bold text-white backdrop-blur">
                   <span>{followersCount.toLocaleString()} Followers</span>
-                </div>
+                </Badge>
               </div>
 
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 onClick={handleFollowToggle}
                 className={
                   isFollowing
-                    ? "bg-white text-slate-900 font-extrabold px-8 py-2.5 rounded-full text-sm transition shadow-lg"
-                    : "bg-brand-lime hover:bg-brand-limehover text-slate-950 font-extrabold px-8 py-2.5 rounded-full text-sm transition shadow-lg active:scale-95"
+                    ? "h-auto rounded-full bg-white px-8 py-2.5 text-sm font-extrabold text-slate-900 shadow-lg hover:bg-white hover:text-slate-900"
+                    : "h-auto rounded-full bg-brand-lime px-8 py-2.5 text-sm font-extrabold text-slate-950 shadow-lg hover:bg-brand-limehover hover:text-slate-950 active:scale-95"
                 }
               >
                 {isFollowing ? "Following ✓" : "Follow"}
-              </button>
+              </Button>
             </div>
           </div>
         </section>
@@ -100,37 +104,36 @@ export default function CreatorProfilePage({
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4">
           <div className="flex items-center justify-between pb-6 border-b border-slate-200">
             <div className="flex items-center gap-3">
-              <button
+              <Button
                 type="button"
-                className="bg-white border border-slate-200 text-slate-800 text-xs font-bold px-4 py-2 rounded-full shadow-sm flex items-center gap-1.5"
+                variant="ghost"
+                className="h-auto gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-800 shadow-sm hover:bg-white hover:text-slate-800"
               >
-                <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                </svg>
+                <FilterIcon className="w-4 h-4 text-slate-500" />
                 <span>Filter</span>
-              </button>
+              </Button>
 
-              <button
+              <Button
                 type="button"
-                className="bg-white border border-slate-200 text-slate-800 text-xs font-bold px-4 py-2 rounded-full shadow-sm flex items-center gap-1.5"
+                variant="ghost"
+                className="h-auto gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-800 shadow-sm hover:bg-white hover:text-slate-800"
               >
-                <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                </svg>
+                <LayoutGridIcon className="w-4 h-4 text-slate-500" />
                 <span>Grid</span>
-              </button>
+              </Button>
 
-              <button
+              <Button
                 type="button"
-                className="bg-white border border-slate-200 text-slate-800 text-xs font-bold px-4 py-2 rounded-full shadow-sm hidden sm:inline-flex items-center gap-1.5"
+                variant="ghost"
+                className="hidden h-auto gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-800 shadow-sm hover:bg-white hover:text-slate-800 sm:inline-flex"
               >
                 <span>Category</span>
-              </button>
+              </Button>
             </div>
 
-            <span className="text-xs font-extrabold text-slate-500 bg-white border border-slate-200 px-4 py-2 rounded-full shadow-sm">
+            <Badge className="h-auto rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-500 shadow-sm">
               {COURSES.length} Courses Published
-            </span>
+            </Badge>
           </div>
         </section>
 
