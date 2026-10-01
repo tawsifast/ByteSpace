@@ -1,9 +1,19 @@
 "use client";
 
 import { useState, useMemo, FormEvent } from "react";
+import { FilterIcon, SearchIcon } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CourseCard } from "@/components/CourseCard";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   ALL_COURSES,
   COURSE_CATEGORIES,
@@ -108,22 +118,10 @@ export default function CoursesPage() {
                 className="relative flex items-center bg-white rounded-full p-2 shadow-2xl"
               >
                 <div className="pl-4 text-slate-400">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </svg>
+                  <SearchIcon className="w-5 h-5" />
                 </div>
-                <input
-                  className="w-full bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm sm:text-base focus:ring-0 px-3 py-2 outline-none"
+                <Input
+                  className="h-auto w-full rounded-full border-0 bg-transparent px-3 py-2 text-sm sm:text-base text-slate-800 shadow-none placeholder:text-slate-400 outline-none focus-visible:border-0 focus-visible:ring-0"
                   placeholder="Search courses, skills, or mentors..."
                   type="text"
                   value={searchQuery}
@@ -132,12 +130,13 @@ export default function CoursesPage() {
                     setCurrentPage(1);
                   }}
                 />
-                <button
-                  className="bg-brand-lime hover:bg-brand-limehover text-slate-950 font-bold px-7 py-3 rounded-full text-sm transition-colors shrink-0 shadow"
+                <Button
+                  className="h-auto shrink-0 rounded-full bg-brand-lime px-7 py-3 text-sm font-bold text-slate-950 shadow hover:bg-brand-limehover hover:text-slate-950"
                   type="submit"
+                  variant="ghost"
                 >
                   Search
-                </button>
+                </Button>
               </form>
             </div>
           </div>
@@ -148,38 +147,38 @@ export default function CoursesPage() {
           {/* Top Control Bar: Filter Info, Level Selector & Sort Selector */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-slate-200">
             <div className="flex items-center gap-2 text-slate-700 text-sm font-semibold">
-              <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-              </svg>
+              <FilterIcon className="w-5 h-5 text-slate-500" />
               <span>Filter ({filteredCourses.length} Courses)</span>
             </div>
 
             <div className="flex items-center gap-3 w-full sm:w-auto">
               {/* Level Dropdown */}
-              <select
-                value={selectedLevel}
-                onChange={(e) => handleLevelChange(e.target.value)}
-                className="bg-white border border-slate-200 rounded-full px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-blue shadow-sm cursor-pointer"
-              >
-                {LEVEL_OPTIONS.map((lvl) => (
-                  <option key={lvl} value={lvl}>
-                    {lvl}
-                  </option>
-                ))}
-              </select>
+              <Select value={selectedLevel} onValueChange={handleLevelChange}>
+                <SelectTrigger className="h-auto w-auto rounded-full border-slate-200 bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 shadow-sm cursor-pointer focus-visible:border-slate-200 focus-visible:ring-2 focus-visible:ring-brand-blue">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {LEVEL_OPTIONS.map((lvl) => (
+                    <SelectItem key={lvl} value={lvl}>
+                      {lvl}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
               {/* Sort Dropdown */}
-              <select
-                value={selectedSort}
-                onChange={(e) => handleSortChange(e.target.value)}
-                className="bg-white border border-slate-200 rounded-full px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-blue shadow-sm cursor-pointer"
-              >
-                {SORT_OPTIONS.map((sortOpt) => (
-                  <option key={sortOpt} value={sortOpt}>
-                    {sortOpt}
-                  </option>
-                ))}
-              </select>
+              <Select value={selectedSort} onValueChange={handleSortChange}>
+                <SelectTrigger className="h-auto w-auto rounded-full border-slate-200 bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 shadow-sm cursor-pointer focus-visible:border-slate-200 focus-visible:ring-2 focus-visible:ring-brand-blue">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {SORT_OPTIONS.map((sortOpt) => (
+                    <SelectItem key={sortOpt} value={sortOpt}>
+                      {sortOpt}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
@@ -188,18 +187,19 @@ export default function CoursesPage() {
             {COURSE_CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat;
               return (
-                <button
+                <Button
                   key={cat}
                   type="button"
+                  variant="ghost"
                   onClick={() => handleCategoryChange(cat)}
                   className={
                     isActive
-                      ? "bg-brand-lime text-slate-950 font-extrabold px-5 py-2 rounded-full text-xs sm:text-sm shrink-0 shadow-sm transition hover:brightness-95"
-                      : "bg-white text-slate-600 font-semibold px-4 py-2 rounded-full text-xs sm:text-sm hover:bg-slate-100 hover:text-slate-900 transition border border-slate-200 shrink-0"
+                      ? "h-auto shrink-0 rounded-full border-0 bg-brand-lime px-5 py-2 text-xs sm:text-sm font-extrabold text-slate-950 shadow-sm hover:bg-brand-lime hover:text-slate-950 hover:brightness-95"
+                      : "h-auto shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                   }
                 >
                   {cat}
-                </button>
+                </Button>
               );
             })}
           </div>
@@ -216,16 +216,17 @@ export default function CoursesPage() {
               <p className="text-slate-500 text-sm mt-2 max-w-sm mx-auto">
                 Try adjusting your search query, level filter, or selected category pill.
               </p>
-              <button
+              <Button
+                variant="ghost"
                 onClick={() => {
                   setActiveCategory("View All");
                   setSelectedLevel("All Level");
                   setSearchQuery("");
                 }}
-                className="mt-6 bg-brand-blue text-white font-bold text-xs px-6 py-2.5 rounded-full hover:bg-brand-darkblue transition"
+                className="mt-6 h-auto rounded-full bg-brand-blue px-6 py-2.5 text-xs font-bold text-white hover:bg-brand-darkblue hover:text-white"
               >
                 Reset Filters
-              </button>
+              </Button>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -240,44 +241,50 @@ export default function CoursesPage() {
         {filteredCourses.length > 0 && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 flex items-center justify-center">
             <nav className="inline-flex items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200 shadow-sm">
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="icon"
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="w-9 h-9 rounded-xl flex items-center justify-center text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:hover:bg-transparent transition text-sm font-bold"
+                className="size-9 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-100 hover:text-slate-600 disabled:opacity-40"
                 aria-label="Previous page"
               >
                 ‹
-              </button>
+              </Button>
 
               {Array.from({ length: totalPages }).map((_, idx) => {
                 const pageNum = idx + 1;
                 const isCurrent = pageNum === currentPage;
                 return (
-                  <button
+                  <Button
                     key={pageNum}
                     type="button"
+                    variant="ghost"
+                    size="icon"
                     onClick={() => setCurrentPage(pageNum)}
                     className={
                       isCurrent
-                        ? "w-9 h-9 rounded-xl bg-brand-blue text-white font-black text-sm shadow"
-                        : "w-9 h-9 rounded-xl text-slate-700 hover:bg-slate-100 transition font-bold text-sm"
+                        ? "size-9 rounded-xl bg-brand-blue text-sm font-black text-white shadow hover:bg-brand-blue hover:text-white"
+                        : "size-9 rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-100 hover:text-slate-700"
                     }
                   >
                     {pageNum}
-                  </button>
+                  </Button>
                 );
               })}
 
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="icon"
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="w-9 h-9 rounded-xl flex items-center justify-center text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:hover:bg-transparent transition text-sm font-bold"
+                className="size-9 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-100 hover:text-slate-600 disabled:opacity-40"
                 aria-label="Next page"
               >
                 ›
-              </button>
+              </Button>
             </nav>
           </div>
         )}
