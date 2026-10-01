@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -171,14 +172,16 @@ export default function RegisterPage() {
       <div className="mx-auto grid min-h-dvh max-w-[1180px] grid-cols-1 items-center gap-5 px-[6vw] py-10 md:grid-cols-[1.1fr_1fr]">
         {/* Left: pitch + card collage */}
         <div>
-          <svg viewBox="0 0 30 30" className="h-[30px] w-[30px]">
-            <path
-              d="M4 2h10c6 0 10 3.5 10 8 0 3-1.6 5-4 6.2C23 17.4 25 20 25 23.5 25 27.5 21.5 30 15.5 30H4z"
-              fill={LIME}
-            />
-            <rect x="9" y="7" width="7" height="6" rx="2" fill={BLUE} />
-            <rect x="9" y="16" width="9" height="7" rx="2" fill={BLUE} />
-          </svg>
+          <Link href="/" aria-label="ByteSpace Home">
+            <svg viewBox="0 0 30 30" className="h-[30px] w-[30px]">
+              <path
+                d="M4 2h10c6 0 10 3.5 10 8 0 3-1.6 5-4 6.2C23 17.4 25 20 25 23.5 25 27.5 21.5 30 15.5 30H4z"
+                fill={LIME}
+              />
+              <rect x="9" y="7" width="7" height="6" rx="2" fill={BLUE} />
+              <rect x="9" y="16" width="9" height="7" rx="2" fill={BLUE} />
+            </svg>
+          </Link>
 
           <h1 className="mt-6 text-base font-semibold text-white">Sign up and come in</h1>
           <p className="mb-8 mt-2.5 max-w-xs text-[13px] leading-relaxed text-[#d7d9ff]">
@@ -263,7 +266,7 @@ export default function RegisterPage() {
 
             <p className="mt-6 text-center text-[12.5px] text-slate-400">
               Already have an account?{" "}
-              <a href="#" className="font-semibold" style={{ color: BLUE }}>
+              <a href="/login" className="font-semibold" style={{ color: BLUE }}>
                 Login
               </a>
             </p>
