@@ -96,10 +96,10 @@ export function ValuePropSplitSection() {
           <div className="relative order-2 lg:order-1">
             <div className="relative z-10 flex justify-center">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuByZplS_MvG28_ifQxgt9tyOyLMksT2SFgEhjxg_V1sCiICx33HshZ-wcO-NLSsWXffRExXErhxV5pxb94JBZGZKuei0ukluwZhEGdgulm-gFAtS7g75bJadPJ44ulPlI-Pe60_Pcuzi80cVrfTWbXLUr6lHjZt0uki7AbEiRYTTAeTQvdL7dpxvZED4vwPL5PR2Pfj-6hYCpBe43azrZvPZQK4RCfc6YrDlH1ujSVssUxHPowIwUyoiw"
+                src="/Image.png"
                 alt="Girl with tablet"
                 width={380}
-                height={380}
+                height={450}
                 className="w-full max-w-[380px] h-auto object-cover drop-shadow-xl"
               />
             </div>
